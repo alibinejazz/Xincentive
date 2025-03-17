@@ -11,6 +11,17 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		92CCA87BB5844E82AD94BD21 /* Satoshi-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC83C0ECF442E6ABBE08BC /* Satoshi-Black.ttf */; };
+		AD303CF8AAE246548A648DB1 /* Satoshi-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A96B3C494DDF4666AB12BFA3 /* Satoshi-BlackItalic.ttf */; };
+		1DD8C41400A74E018B7F2C2A /* Satoshi-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAA3F3898AB84FFCB25CC8CD /* Satoshi-Bold.ttf */; };
+		359170FB0E9740238F2D9236 /* Satoshi-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 334442E3A7C2486797CE1FD0 /* Satoshi-BoldItalic.ttf */; };
+		A94026DA10324538B5DA6235 /* Satoshi-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A96573095D034E2BAF081277 /* Satoshi-Italic.ttf */; };
+		E26FFB16C8B04EC98F7DC766 /* Satoshi-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EB1A6CC300C4BEF86E22CB2 /* Satoshi-Light.ttf */; };
+		48A67BD23645409DA40896DA /* Satoshi-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E35F02630968436F811BD66A /* Satoshi-Medium.ttf */; };
+		798A4B77DE494AC6B241D34A /* Satoshi-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2283EC356B1245BAA796C421 /* Satoshi-MediumItalic.ttf */; };
+		04A12D2298DC4A9A83D4E593 /* Satoshi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3E2312F6D064E91A0925A92 /* Satoshi-Regular.ttf */; };
+		C9F253015AD74166AD8399B2 /* Satoshi-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B583029572B407ABD36CA7D /* Satoshi-Variable.ttf */; };
+		0CC54454688346EC8FB1A1F6 /* Satoshi-VariableItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B88139C8D7E4099AD3377AA /* Satoshi-VariableItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +46,17 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = forChart/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = forChart/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		5BCC83C0ECF442E6ABBE08BC /* Satoshi-Black.ttf */ = {isa = PBXFileReference; name = "Satoshi-Black.ttf"; path = "../assets/fonts/Satoshi-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A96B3C494DDF4666AB12BFA3 /* Satoshi-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Satoshi-BlackItalic.ttf"; path = "../assets/fonts/Satoshi-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BAA3F3898AB84FFCB25CC8CD /* Satoshi-Bold.ttf */ = {isa = PBXFileReference; name = "Satoshi-Bold.ttf"; path = "../assets/fonts/Satoshi-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		334442E3A7C2486797CE1FD0 /* Satoshi-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Satoshi-BoldItalic.ttf"; path = "../assets/fonts/Satoshi-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A96573095D034E2BAF081277 /* Satoshi-Italic.ttf */ = {isa = PBXFileReference; name = "Satoshi-Italic.ttf"; path = "../assets/fonts/Satoshi-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4EB1A6CC300C4BEF86E22CB2 /* Satoshi-Light.ttf */ = {isa = PBXFileReference; name = "Satoshi-Light.ttf"; path = "../assets/fonts/Satoshi-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E35F02630968436F811BD66A /* Satoshi-Medium.ttf */ = {isa = PBXFileReference; name = "Satoshi-Medium.ttf"; path = "../assets/fonts/Satoshi-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2283EC356B1245BAA796C421 /* Satoshi-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Satoshi-MediumItalic.ttf"; path = "../assets/fonts/Satoshi-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F3E2312F6D064E91A0925A92 /* Satoshi-Regular.ttf */ = {isa = PBXFileReference; name = "Satoshi-Regular.ttf"; path = "../assets/fonts/Satoshi-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9B583029572B407ABD36CA7D /* Satoshi-Variable.ttf */ = {isa = PBXFileReference; name = "Satoshi-Variable.ttf"; path = "../assets/fonts/Satoshi-Variable.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1B88139C8D7E4099AD3377AA /* Satoshi-VariableItalic.ttf */ = {isa = PBXFileReference; name = "Satoshi-VariableItalic.ttf"; path = "../assets/fonts/Satoshi-VariableItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +115,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				A5382D745A894826BF59D80F /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -115,6 +138,25 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		A5382D745A894826BF59D80F /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				5BCC83C0ECF442E6ABBE08BC /* Satoshi-Black.ttf */,
+				A96B3C494DDF4666AB12BFA3 /* Satoshi-BlackItalic.ttf */,
+				BAA3F3898AB84FFCB25CC8CD /* Satoshi-Bold.ttf */,
+				334442E3A7C2486797CE1FD0 /* Satoshi-BoldItalic.ttf */,
+				A96573095D034E2BAF081277 /* Satoshi-Italic.ttf */,
+				4EB1A6CC300C4BEF86E22CB2 /* Satoshi-Light.ttf */,
+				E35F02630968436F811BD66A /* Satoshi-Medium.ttf */,
+				2283EC356B1245BAA796C421 /* Satoshi-MediumItalic.ttf */,
+				F3E2312F6D064E91A0925A92 /* Satoshi-Regular.ttf */,
+				9B583029572B407ABD36CA7D /* Satoshi-Variable.ttf */,
+				1B88139C8D7E4099AD3377AA /* Satoshi-VariableItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -185,6 +227,17 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				92CCA87BB5844E82AD94BD21 /* Satoshi-Black.ttf in Resources */,
+				AD303CF8AAE246548A648DB1 /* Satoshi-BlackItalic.ttf in Resources */,
+				1DD8C41400A74E018B7F2C2A /* Satoshi-Bold.ttf in Resources */,
+				359170FB0E9740238F2D9236 /* Satoshi-BoldItalic.ttf in Resources */,
+				A94026DA10324538B5DA6235 /* Satoshi-Italic.ttf in Resources */,
+				E26FFB16C8B04EC98F7DC766 /* Satoshi-Light.ttf in Resources */,
+				48A67BD23645409DA40896DA /* Satoshi-Medium.ttf in Resources */,
+				798A4B77DE494AC6B241D34A /* Satoshi-MediumItalic.ttf in Resources */,
+				04A12D2298DC4A9A83D4E593 /* Satoshi-Regular.ttf in Resources */,
+				C9F253015AD74166AD8399B2 /* Satoshi-Variable.ttf in Resources */,
+				0CC54454688346EC8FB1A1F6 /* Satoshi-VariableItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
