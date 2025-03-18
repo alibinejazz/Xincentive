@@ -1,6 +1,7 @@
-import React from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import React from 'react';
 import success from "../assets/success.png"
 
 const SuccessModal = ({ visible, onClose }) => {
@@ -107,13 +108,15 @@ successIcon: {
     textAlign: 'center',
     color: '#9f9f9f',
     marginBottom: 40,
-    width: "85%",
+    width: "90%",
   },
   doneButton: {
     backgroundColor: '#6ee17c',
-    paddingVertical: 20,
-    paddingHorizontal: 150,
+    paddingVertical: 15,
     borderRadius: 30,
+    alignItems:"center",
+    width:"90%",
+    marginBottom:10
   },
   doneButtonText: {
     color: 'black',

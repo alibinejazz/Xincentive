@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 import CandlestickChart from './CandlestickChart';
-import { Image } from 'react-native';
 import ConversionSuccessModal from './ConversionSuccessModal';
-import points from "../assets/points.png"
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Image } from 'react-native';
 import SuccessModal from './SuccessModal';
+import blacktri from "../assets/blacktri.png";
+import points from "../assets/points.png"
+
 const CryptoConversion = () => {
 
     const [modalVisible, setModalVisible] = useState(false); // ✅ State to control modal
@@ -77,7 +80,10 @@ const CryptoConversion = () => {
                 {/* Trend Section */}
                 <View style={styles.trendSection}>
                     <Text style={styles.trendLabel}>This Week</Text>
-                    <Text style={styles.trend}>+10.03 % ▲</Text>
+                    <View style={styles.trendRow}>
+                        <Text style={styles.trend}>+10.03 %</Text>
+                        <Image source={blacktri} style={styles.trendIcon} />
+                    </View>
                 </View>
             </View>
 
@@ -165,10 +171,10 @@ const styles = StyleSheet.create({
     priceTrendContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '110%',
+        justifyContent: 'space-evenly',
+        width: '100%',
         paddingVertical: 10,
-        paddingHorizontal: 20,
+        // paddingHorizontal: 20,
         borderRadius: 12,
         marginVertical: 15,
         borderBottomWidth: 0.2,
@@ -191,10 +197,20 @@ const styles = StyleSheet.create({
     trendSection: {
         alignItems: "flex-start",
     },
+    trendRow: {
+        flexDirection: "row",
+        alignItems: "center", // Align items horizontally
+    },
     trendLabel: {
         fontSize: 18,
         color: 'gray',
         marginLeft: 10,
+    },
+    trendIcon: {
+        width: 10,
+        height: 10,
+        marginBottom: 20,
+        marginLeft: 10, // Adjust this value to move the icon slightly up
     },
     trend: {
         fontSize: 28,
