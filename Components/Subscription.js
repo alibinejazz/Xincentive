@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Modal, ScrollView, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
 import BottomNav from './BottomNav';
 import CancelSubscriptionModal from './CancelSubscriptionModal';
 import cancel from "../assets/cancel.png";
 import diamond from "../assets/diamond.png";
+import LinearBackground from "../assets/gradient.png"; // Background Image
 
 const Subscription = () => {
     const navigation = useNavigation();
@@ -16,15 +16,16 @@ const Subscription = () => {
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
 
-                <LinearGradient colors={['#faf5f5', '#f8f2f2']} style={styles.headerContainer}>
+                {/* Background Image for Header */}
+                <ImageBackground source={LinearBackground} style={styles.headerContainer}>
                     <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                         <Icon name="chevron-left" size={24} color="black" />
                         <Text style={styles.backText}>Back</Text>
                     </TouchableOpacity>
                     <Text style={styles.header}>My Subscription</Text>
-                </LinearGradient>
+                </ImageBackground>
 
-                {/* Profile Info Card */}
+                {/* Subscription Info Cards */}
                 <View style={styles.card}>
                     <View>
                         <Text style={styles.title}>Renewal date</Text>
@@ -46,27 +47,29 @@ const Subscription = () => {
                         <Text style={styles.profileText}>Monthly plan</Text>
                     </View>
                     <TouchableOpacity style={styles.upgradeButton}>
-                        <Image source={diamond}/>
+                        <Image source={diamond} />
                         <Text style={styles.upgradeText}> Upgrade</Text>
                     </TouchableOpacity>
                 </View>
 
+                {/* Cancel Subscription Button */}
                 <TouchableOpacity style={styles.cardcancel} onPress={() => setModalVisible(true)}>
                     <View style={styles.row}>
-                        <Image source={cancel} style={{ marginBottom: 10 }}/>
+                        <Image source={cancel} style={{ marginBottom: 10 }} />
                         <Text style={styles.title}>Cancel subscription</Text>
                     </View>
                     <Icon name="chevron-right" color="black" size={24} />
                 </TouchableOpacity>
             </ScrollView>
+
+            {/* Bottom Navigation */}
             <BottomNav />
 
+            {/* Cancel Subscription Modal */}
             <CancelSubscriptionModal
                 visible={modalVisible}
                 onClose={() => setModalVisible(false)}
-                onRemove={() => {
-                    setModalVisible(false);
-                }}
+                onRemove={() => setModalVisible(false)}
             />
         </View>
     );
@@ -80,6 +83,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         paddingBottom: 20,
     },
+    scrollContainer: {
+        flexGrow: 1,
+        paddingBottom: 50,
+    },
     headerContainer: {
         paddingTop: 70,
         paddingBottom: 20,
@@ -87,12 +94,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        resizeMode: 'cover',
     },
-    scrollContainer: {
-        flexGrow: 1,
-        paddingBottom: 50, // Ensures space for scrolling
-    },
-
     backButton: {
         position: 'absolute',
         top: 20,
@@ -105,21 +108,21 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "black",
         marginLeft: 5,
-        
-      },
+    },
     header: {
         fontSize: 26,
         fontWeight: 'bold',
         textAlign: 'center',
         paddingBottom: 30,
         flex: 1,
+        color: '#000000', // Ensures visibility on the background
     },
     card: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: 'white',
         padding: 24,
-        paddingTop:28,
+        paddingTop: 28,
         borderRadius: 15,
         marginHorizontal: 20,
         marginBottom: 40,
@@ -128,14 +131,14 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 20,
         elevation: 30,
-        marginTop:-13,
+        marginTop: -13,
     },
-    cardcancel:{
+    cardcancel: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: 'white',
         padding: 24,
-        paddingTop:28,
+        paddingTop: 28,
         borderRadius: 15,
         marginHorizontal: 20,
         shadowColor: 'rgba(0, 0, 0, 0.14)',
@@ -143,8 +146,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 20,
         elevation: 20,
-        marginTop:20,
-        borderWidth:0.01
+        marginTop: 20,
+        borderWidth: 0.01,
     },
     title: {
         color: 'black',

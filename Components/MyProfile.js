@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -10,6 +10,7 @@ import subscription from "../assets/subscription.png";
 import terms from "../assets/terms.png";
 import signout from "../assets/signout.png";
 import edit from "../assets/edit.png";
+import LinearBackground from "../assets/gradient.png";
 
 const MyProfile = () => {
   const navigation = useNavigation();
@@ -24,10 +25,14 @@ const MyProfile = () => {
 
   return (
     <View style={styles.container}>
-      {/* Use ScrollView for Scrollable Content */}
-      <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+      {/* Ensure the whole screen is scrollable */}
+      <ScrollView 
+        style={{ flex: 1 }} 
+        contentContainerStyle={styles.scrollContainer} 
+        showsVerticalScrollIndicator={false}
+      >
         {/* Gradient Header */}
-        <LinearGradient colors={['#faf5f5', '#f8f2f2']} style={styles.headerContainer}>
+        <ImageBackground source={LinearBackground} style={styles.headerContainer}>
           <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
             <Icon name="chevron-left" size={24} color="black" />
             <Text style={styles.backText}>Back</Text>
@@ -36,8 +41,7 @@ const MyProfile = () => {
           <TouchableOpacity style={styles.editButton} onPress={() => navigation.navigate('EditProfile')}>
             <Image source={edit} />
           </TouchableOpacity>
-        </LinearGradient>
-
+          </ImageBackground>
         {/* Profile Info Card */}
         <View style={styles.profileCard}>
           <Text style={styles.profileName}>Adeel Khan</Text>
@@ -60,17 +64,15 @@ const MyProfile = () => {
 
         {/* App Version */}
         <Text style={styles.versionText}>Version 1.1</Text>
-      </ScrollView>
 
-      {/* Bottom Navigation (Outside ScrollView) */}
-      <BottomNav />
+        {/* Bottom Navigation INSIDE ScrollView */}
+      </ScrollView>
+        <BottomNav />
 
       {/* SignOut Modal */}
       <SignoutModal
         visible={isModalVisible}
-        onConfirm={() => {
-          setIsModalVisible(false);
-        }}
+        onConfirm={() => setIsModalVisible(false)}
         onCancel={() => setIsModalVisible(false)}
       />
     </View>
@@ -85,8 +87,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   scrollContainer: {
-    flexGrow: 1, // Allows scrolling content to fill available space
-    paddingBottom: 50, // Ensures spacing at the bottom to prevent clipping
+    flexGrow: 1, // Ensures scrolling works
+    paddingBottom: 100, // Extra padding for scrollable bottom content
   },
   headerContainer: {
     paddingTop: 70,
@@ -95,6 +97,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    resizeMode: 'cover',
   },
   backButton: {
     position: 'absolute',
@@ -108,7 +111,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "black",
     marginLeft: 5,
-
   },
   editButton: {
     padding: 7,
@@ -177,6 +179,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'gray',
     marginTop: 40,
-    marginLeft: 20,
+    marginLeft: 20, // More space at the bottom
   },
 });

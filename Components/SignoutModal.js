@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
       },
     closeButton: {
       position: 'absolute',
-      top: '24.5%',
+      top: '23.5%',
       right: '10%',
       backgroundColor: 'white',
       borderRadius: 50,

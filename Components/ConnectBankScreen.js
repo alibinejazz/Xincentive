@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
 import BottomNav from './BottomNav';
 import bank from "../assets/bank.png";
+import LinearBackground from "../assets/gradient.png"; // Ensure this is correctly imported
 
 const ConnectBankScreen = () => {
   const navigation = useNavigation();
@@ -12,8 +12,8 @@ const ConnectBankScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* Gradient Header Background */}
-      <LinearGradient colors={['#faf0f0', '#faf0f0', '#faf0f0']} style={styles.headerContainer}>
+      {/* Background Image Header */}
+      <ImageBackground source={LinearBackground} style={styles.headerContainer} resizeMode="cover">
         {/* Back Button */}
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <Icon name="chevron-left" size={24} color="black" />
@@ -22,7 +22,7 @@ const ConnectBankScreen = () => {
 
         {/* Header */}
         <Text style={styles.header}>Connect your bank account</Text>
-      </LinearGradient>
+      </ImageBackground>
 
       {/* Bank Account Card */}
       <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('AddNewCard')}>
@@ -54,9 +54,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    
   },
   headerContainer: {
+    width: '110%',
     paddingHorizontal: 20,
     paddingTop: 50,
     paddingBottom: 30,
@@ -73,14 +73,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "black",
     marginLeft: 5,
-    
   },
   header: {
     fontSize: 26,
     textAlign: 'center',
     marginTop: 20,
     paddingBottom: 30,
-    fontWeight:"bold"
+    fontWeight: "bold",
   },
   card: {
     backgroundColor: 'white',

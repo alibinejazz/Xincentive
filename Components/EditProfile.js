@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Modal, ScrollView, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Modal, ScrollView, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
 import BottomNav from './BottomNav';
 import edit from "../assets/edit.png";
 import user from "../assets/User.png";
 import emails from "../assets/email.png";
 import phone from "../assets/phone.png";
-
+import LinearBackground from "../assets/gradient.png"; // Background Image
 
 const EditProfile = () => {
     const navigation = useNavigation();
@@ -18,26 +17,25 @@ const EditProfile = () => {
     const [isChanged, setIsChanged] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
 
-
     const handleInputChange = (setter, value) => {
         setter(value);
         setIsChanged(true);
     };
 
     const handleSave = () => {
-        navigation.navigate('MyProfile'); // Navigate first
+        navigation.navigate('MyProfile');
         setTimeout(() => {
-            setModalVisible(true); // Show modal after navigation
-            setTimeout(() => setModalVisible(false), 2000); // Hide modal after 1.5s
-        }, 1000); // Delay to ensure navigation happens first
+            setModalVisible(true);
+            setTimeout(() => setModalVisible(false), 2000);
+        }, 1000);
     };
-
 
     return (
         <KeyboardAvoidingView style={styles.container} behavior="padding">
             <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
 
-                <LinearGradient colors={['#faf5f5', '#f8f2f2']} style={styles.headerContainer}>
+                {/* Background Image for Header */}
+                <ImageBackground source={LinearBackground} style={styles.headerContainer}>
                     <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
                         <Icon name="chevron-left" size={24} color="black" />
                         <Text style={styles.backText}>Back</Text>
@@ -46,7 +44,7 @@ const EditProfile = () => {
                     <TouchableOpacity style={styles.editButton}>
                         <Image source={edit} />
                     </TouchableOpacity>
-                </LinearGradient>
+                </ImageBackground>
 
                 {/* Profile Info Card */}
                 <View style={styles.updateProfileCard}>
@@ -109,11 +107,9 @@ const EditProfile = () => {
                         Save
                     </Text>
                 </TouchableOpacity>
-                <Modal
-                    visible={modalVisible}
-                    transparent={true}
-                    animationType="fade"
-                >
+
+                {/* Modal for confirmation */}
+                <Modal visible={modalVisible} transparent={true} animationType="fade">
                     <View style={styles.modalContainer}>
                         <View style={styles.modalContent}>
                             <Icon name="check-circle" size={30} color="white" />
@@ -122,6 +118,8 @@ const EditProfile = () => {
                     </View>
                 </Modal>
             </ScrollView>
+
+            {/* Bottom Navigation */}
             <BottomNav />
         </KeyboardAvoidingView>
     );
@@ -134,6 +132,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ffffff',
     },
+    scrollContainer: {
+        flexGrow: 1,
+        justifyContent: 'center',
+        paddingBottom: 20,
+    },
     headerContainer: {
         paddingTop: 70,
         paddingBottom: 20,
@@ -141,13 +144,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        resizeMode: 'cover',
     },
-    scrollContainer: {
-        flexGrow: 1,
-        justifyContent: 'center',
-        paddingBottom: 20, // Ensures space for scrolling
-    },
-
     backButton: {
         position: 'absolute',
         top: 20,
@@ -160,8 +158,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "black",
         marginLeft: 5,
-        
-      },
+    },
     editButton: {
         padding: 7,
         marginBottom: 30,
@@ -172,6 +169,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingBottom: 30,
         flex: 1,
+        color: '#000000', // Ensure text is visible on background
     },
     updateProfileCard: {
         backgroundColor: 'white',
@@ -201,7 +199,7 @@ const styles = StyleSheet.create({
     labelContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 5,  // Space between label and input
+        marginBottom: 5,
     },
     inputIcon: {
         marginRight: 8,
@@ -216,19 +214,19 @@ const styles = StyleSheet.create({
         color: '#000',
     },
     saveButton: {
-        paddingVertical: 18, // Keep padding the same
-        paddingHorizontal: 50, // Adjust for better responsiveness
+        paddingVertical: 18,
+        paddingHorizontal: 50,
         borderRadius: 30,
-        alignSelf: 'center', // Center button horizontally
-        marginTop: 180, // Add space above the button
-        bottom: 120, // Place it above BottomNav
+        alignSelf: 'center',
+        marginTop: 180,
+        bottom: 120,
         width: "90%",
     },
     saveButtonText: {
         color: '#bababa',
         fontSize: 18,
         fontWeight: '500',
-        textAlign: 'center', // Ensure text is centered inside the button
+        textAlign: 'center',
     },
     modalContainer: {
         flex: 1,

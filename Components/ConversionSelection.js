@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, Dimensions, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -8,6 +8,7 @@ import QRScan from './QRscan';
 import CryptoConversion from './CryptoConversion';
 import dollars from "../assets/dollars.png";
 import crypto from "../assets/crypto.png";
+import LinearBackground from "../assets/gradient.png"; 
 
 const ConversionSelection = () => {
     const navigation = useNavigation();
@@ -17,16 +18,16 @@ const ConversionSelection = () => {
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
                 {/* Gradient Header Background */}
-                <LinearGradient colors={['#faf0f0', '#faf0f0', '#faf0f0']} style={styles.headerContainer}>
-                    {/* Back Button */}
-                    <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                        <Icon name="chevron-left" size={24} color="black" />
-                        <Text style={styles.backText}>Back</Text>
-                    </TouchableOpacity>
-
-                    {/* Header */}
-                    <Text style={styles.header}>Convert to</Text>
-                </LinearGradient>
+                 <ImageBackground source={LinearBackground} style={styles.headerContainer} resizeMode="cover">
+                          {/* Back Button */}
+                          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                            <Icon name="chevron-left" size={24} color="black" />
+                            <Text style={styles.backText}>Back</Text>
+                          </TouchableOpacity>
+                
+                          {/* Header */}
+                          <Text style={styles.header}>Connect your bank account</Text>
+                        </ImageBackground>
 
                 {/* Bank Account Card */}
                 <View style={styles.selectionContainer}>
@@ -68,16 +69,18 @@ const ConversionSelection = () => {
                         </View>
                     </TouchableOpacity>
                 </View>
+
+                {/* Confirm Button */}
+                {selectedOption === null && (
+                    <TouchableOpacity style={styles.confirmButton}>
+                        <Text style={styles.confirmButtonText}>Confirm Conversion</Text>
+                    </TouchableOpacity>
+                )}
+
+                {/* QRScan or CryptoConversion Components */}
                 {selectedOption === "Dollars" && <QRScan />}
                 {selectedOption === "Crypto" && <CryptoConversion />}
-
             </ScrollView>
-
-            {selectedOption === null && (
-                <TouchableOpacity style={styles.confirmButton}>
-                    <Text style={styles.confirmButtonText}>Confirm Conversion</Text>
-                </TouchableOpacity>
-            )}
 
             {/* Bottom Navigation */}
             <BottomNav />
@@ -97,23 +100,24 @@ const styles = StyleSheet.create({
         paddingBottom: 100, // Ensures scrolling space
     },
     headerContainer: {
+        width: '110%',
         paddingHorizontal: 20,
         paddingTop: 50,
         paddingBottom: 30,
-    },
-    backButton: {
+      },
+      backButton: {
         position: 'absolute',
         top: 20,
         left: 20,
         padding: 10,
         flexDirection: "row",
         alignItems: "center",
-    },
-    backText: {
+      },
+      backText: {
         fontSize: 16,
         color: "black",
         marginLeft: 5,
-    },
+      },
     header: {
         fontSize: 26,
         fontWeight: 'bold',
@@ -141,6 +145,8 @@ const styles = StyleSheet.create({
         marginTop: -30,
         overflow: 'hidden',
         width: "48%",
+        borderWidth: 1,  
+        borderColor: '#EFEFEF',
     },
     selectedCard: {
         borderColor: "rgb(110, 225, 124)",
@@ -178,9 +184,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 50,
         borderRadius: 30,
         alignSelf: 'center',
-        marginTop: 20,
-        position: 'absolute',
-        bottom: 120,
+        marginTop: 295, // Increased marginTop to push the button further down
+        marginBottom: 20, // Added marginBottom to ensure space above BottomNav
         width: "90%",
     },
     confirmButtonText: {

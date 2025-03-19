@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -7,7 +7,7 @@ import BottomNav from './BottomNav'; // Import BottomNav
 import add from "../assets/add.png"
 import creditcard from "../assets/creditcard.png"
 import lock from "../assets/lock.png"
-
+import LinearBackground from "../assets/gradient.png"; 
 
 
 const AddNewCard = () => {
@@ -18,21 +18,21 @@ const AddNewCard = () => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
         {/* Gradient Header Background */}
-        <LinearGradient colors={['#faf0f0', '#faf0f0', '#faf0f0']} style={styles.headerContainer}>
+        <ImageBackground source={LinearBackground} style={styles.headerContainer} resizeMode="cover">
           {/* Back Button */}
           <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
             <Icon name="chevron-left" size={24} color="black" />
             <Text style={styles.backText}>Back</Text>
-          </TouchableOpacity> 
+          </TouchableOpacity>
 
           {/* Header */}
           <Text style={styles.header}>Connect your bank account</Text>
-        </LinearGradient>
+        </ImageBackground>
 
         {/* Bank Account Card */}
         <TouchableOpacity style={styles.card}>
           <View style={styles.iconContainer}>
-            <Image source={add}/>
+            <Image source={add} />
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.cardTitle}>Add New Card</Text>
@@ -40,9 +40,9 @@ const AddNewCard = () => {
           <Icon name="chevron-right" size={24} color="black" />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card2} onPress={()=> navigation.navigate('Conversion')}>
+        <TouchableOpacity style={styles.card2} onPress={() => navigation.navigate('Conversion')}>
           <View style={styles.iconContainer2}>
-          <Image source={creditcard}/>
+            <Image source={creditcard} />
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.cardTitle}>Bank Account Details</Text>
@@ -53,7 +53,7 @@ const AddNewCard = () => {
 
         {/* Security Info */}
         <View style={styles.securityContainer}>
-        <Image source={lock} style={{marginBottom:22}} height={30}/>
+          <Image source={lock} style={{ marginBottom: 22 }} height={30} />
           <Text style={styles.securityText}>
             Your account details are safe and secure encrypted with us.
           </Text>
@@ -61,7 +61,7 @@ const AddNewCard = () => {
       </ScrollView>
 
       {/* Bottom Navigation */}
-      <BottomNav /> 
+      <BottomNav />
     </View>
   );
 };
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     paddingBottom: 100, // Ensures scrolling space
   },
   headerContainer: {
+    width: '110%',
     paddingHorizontal: 20,
     paddingTop: 50,
     paddingBottom: 30,
@@ -94,14 +95,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "black",
     marginLeft: 5,
-    
   },
   header: {
     fontSize: 26,
     textAlign: 'center',
     marginTop: 20,
-    paddingBottom:30,
-    fontWeight:"bold"
+    paddingBottom: 30,
+    fontWeight: "bold"
   },
   card: {
     backgroundColor: 'white',

@@ -6,6 +6,8 @@ import { Image } from 'react-native';
 import ConversionSuccessModal from './ConversionSuccessModal';
 import points from "../assets/points.png"
 import SuccessModal from './SuccessModal';
+import CandlestickChartComponent from './CandleStickChartExample';
+import blacktri from "../assets/blacktri.png"
 const CryptoConversion = () => {
 
     const [modalVisible, setModalVisible] = useState(false); // ✅ State to control modal
@@ -49,7 +51,7 @@ const CryptoConversion = () => {
             {/* Input Field */}
             <View style={styles.inputWrapper}>
                 <View style={styles.labelContainer}>
-<Image source={points}/>
+                    <Image source={points} />
                     <Text style={styles.label}>Enter points to convert</Text>
                 </View>
                 <TextInput
@@ -60,51 +62,61 @@ const CryptoConversion = () => {
                 />
             </View>
             {/* Price and Trend */}
-            <View style={styles.priceTrendContainer}>
-                {/* XNTV Price Section */}
-                <View style={styles.priceSection}>
-                    <Text style={styles.priceLabel}>XNTV Price</Text>
-                    <Text style={styles.price}>$1,23</Text>
-                </View>
+            {/* Border Wrapper for Full Width */}
+            <View style={styles.priceTrendBorderWrapper}>
+                <View style={styles.priceTrendContainer}>
+                    {/* XNTV Price Section */}
+                    <View style={styles.priceSection}>
+                        <Text style={styles.priceLabel}>XNTV Price</Text>
+                        <Text style={styles.price}>$1,23</Text>
+                    </View>
 
-                {/* XNTV Coin Icon */}
-                <Image
-                    source={require('./Xcoin.png')}
-                    style={styles.coinIcon}
-                />
+                    {/* XNTV Coin Icon */}
+                    <Image source={require('./Xcoin.png')} style={styles.coinIcon} />
 
-
-                {/* Trend Section */}
-                <View style={styles.trendSection}>
-                    <Text style={styles.trendLabel}>This Week</Text>
-                    <Text style={styles.trend}>+10.03 % ▲</Text>
+                    {/* Trend Section */}
+                    <View style={styles.trendSection}>
+                        <Text style={styles.trendLabel}>This Week</Text>
+                        <View style={styles.trendRow}>
+                            <Text style={styles.trend}>+10.03 %</Text>
+                            <Image source={blacktri} style={styles.trendIcon} />
+                        </View>
+                    </View>
                 </View>
             </View>
+
 
             {/* Candlestick Chart Component */}
-            <CandlestickChart data={candleData} />
+            {/* <CandlestickChart data={candleData} /> */}
+            <CandlestickChartComponent />
 
             {/* Conversion Summary */}
-            <View style={styles.summaryContainer}>
-                <View style={styles.summaryRow}>
-                    <Text style={styles.summaryLabel}>You’ve converted</Text>
-                    <Text style={styles.summaryValue}>50.00</Text>
-                </View>
+            <View style={styles.summaryOuterContainer}>
 
-                <Text style={styles.conversionFormula}>Xntv 0.0011 x 50 points = Xntv 0.05</Text>
+                <View style={styles.summaryContainer}>
+                    <View style={styles.summaryRow}>
+                        <Text style={styles.summaryLabel}>You’ve converted</Text>
+                        <Text style={styles.summaryValue}>50.00</Text>
+                    </View>
 
-                <View style={styles.divider} />
+                    <Text style={styles.conversionFormula}>Xntv 0.0011 x 50 points = Xntv 0.05</Text>
 
-                <View style={styles.summaryRow}>
-                    <Text style={styles.totalLabel}>Total</Text>
-                    <Text style={styles.totalValue}>Xntv 0.00</Text>
+                    <View style={styles.divider} />
+
+                    <View style={styles.summaryRow}>
+                        <Text style={styles.totalLabel}>Total</Text>
+                        <Text style={styles.totalValue}>Xntv 0.00</Text>
+                    </View>
                 </View>
             </View>
 
+
             {/* Confirm Button */}
-            <TouchableOpacity style={styles.confirmButton} onPress={() => setModalVisible(true)}>
-                <Text style={styles.confirmButtonText}>Confirm Conversion</Text>
-            </TouchableOpacity>
+            <View style={styles.confirmButtonContainer}>
+                <TouchableOpacity style={styles.confirmButton} onPress={() => setModalVisible(true)}>
+                    <Text style={styles.confirmButtonText}>Confirm Conversion</Text>
+                </TouchableOpacity>
+            </View>
 
             <SuccessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
 
@@ -119,12 +131,13 @@ const styles = StyleSheet.create({
         // flex: 1,
         alignItems: 'center',
         backgroundColor: '#f5f5f5',
-        padding: 20,
+        // padding: 20,
     },
     balanceLabel: {
         fontSize: 18,
         color: 'black',
         marginBottom: 5,
+        marginTop: 30
     },
     balance: {
         fontSize: 36,
@@ -135,6 +148,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         marginVertical: 15,
         width: '100%',
+        padding: 20
     },
     labelContainer: {
         flexDirection: 'row',
@@ -144,7 +158,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,
-        gap:10
+        gap: 10
     },
     inputIcon: {
         marginRight: 8,
@@ -162,90 +176,113 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 12,
         paddingBottom: 15
     },
+    priceTrendBorderWrapper: {
+        width: '100%', // ✅ Ensures the border extends full width
+        borderBottomWidth: 0.7, // ✅ Moves the border to full width wrapper
+        borderColor: '#c4c4c4',
+        marginBottom:20,
+        alignItems:"center" // Change color if needed
+    },
+
     priceTrendContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '110%',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 12,
-        marginVertical: 15,
-        borderBottomWidth: 0.2,
+        marginVertical: 15, 
+        width:"75%",
+        gap:1
     },
     priceSection: {
         alignItems: 'center',
     },
     priceLabel: {
-        fontSize: 18,
+        fontSize: 16,
         color: 'gray',
     },
     price: {
-        fontSize: 28,
+        fontSize: 32,
         fontWeight: '500',
     },
     coinIcon: {
-        width: 40,
-        height: 40,
+        width: 50,
+        height: 50,
+        marginHorizontal: 26
     },
     trendSection: {
         alignItems: "flex-start",
     },
+    trendRow: {
+        flexDirection: "row",
+        alignItems: "center", // Align items horizontally
+    },
     trendLabel: {
-        fontSize: 18,
+        fontSize: 16,
         color: 'gray',
         marginLeft: 10,
     },
+    trendIcon: {
+        width: 10,
+        height: 10,
+        marginBottom: 20,
+        marginLeft: 10, // Adjust this value to move the icon slightly up
+    },
     trend: {
-        fontSize: 28,
+        fontSize: 32,
         fontWeight: '500',
+    },
+    summaryOuterContainer: {
+        padding: 20, // ✅ External padding for the whole summary section
+        width: '100%',
     },
     summaryContainer: {
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 18,
         width: '100%',
-        marginTop: 20,
-      },
-      
-      summaryRow: {
+        // marginTop: 20,
+    },
+
+    summaryRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 5,
-      },
-      summaryLabel: {
+    },
+    summaryLabel: {
         fontSize: 20,
         fontWeight: '500',
         color: 'black',
-      },
-      summaryValue: {
+    },
+    summaryValue: {
         fontSize: 20,
         fontWeight: '500',
         color: 'black',
-      },
-      conversionFormula: {
+    },
+    conversionFormula: {
         fontSize: 16,
         color: '#9fa1ae',
         marginVertical: 6,
         textAlign: 'left',
-      },
-      divider: {
+    },
+    divider: {
         height: 1,
         backgroundColor: '#E5E5E5',
         marginVertical: 10,
-      },
-      totalLabel: {
+    },
+    totalLabel: {
         fontSize: 17,
         fontWeight: '400',
         color: 'black',
-      },
-      totalValue: {
+    },
+    totalValue: {
         fontSize: 17,
         fontWeight: '400',
         color: 'black',
-      },
-      
+    },
+
+    confirmButtonContainer: {
+        paddingHorizontal: 20, // ✅ External padding for the whole summary section
+        width: '100%',
+    },
     confirmButton: {
         backgroundColor: 'rgb(110, 225, 124)',
         paddingVertical: 18, // ✅ Reduce excessive padding
@@ -254,7 +291,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center', // ✅ Center button horizontally
         marginTop: 20, // ✅ Add space above the button
         width: "100%",
-  },
+    },
     confirmButtonText: {
         color: 'black',
         fontSize: 18,

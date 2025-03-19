@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     position: 'absolute',
-    top: '16.5%',
+    top: '14.5%',
     right: '7%',
     backgroundColor: 'white',
     borderRadius: 50,
@@ -107,13 +107,15 @@ successIcon: {
     textAlign: 'center',
     color: '#9f9f9f',
     marginBottom: 40,
-    width: "85%",
+    width: "90%",
   },
   doneButton: {
     backgroundColor: '#6ee17c',
-    paddingVertical: 20,
-    paddingHorizontal: 150,
+    paddingVertical: 15,
     borderRadius: 30,
+    alignItems:"center",
+    width:"90%",
+    marginBottom:10
   },
   doneButtonText: {
     color: 'black',
