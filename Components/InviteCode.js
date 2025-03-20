@@ -110,37 +110,41 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'black',
         marginLeft: 5,
+        fontFamily:"Satoshi-Medium"
+
     },
     skipButton: {
         padding: 10,
+        // fontFamily:"Satoshi-Regular"
     },
     skipText: {
         fontSize: 16,
         color: '#9e9e9e',
-        fontWeight: 'bold',
+        fontFamily:"Satoshi-Medium"
     },
     headingContainer: {
         marginBottom: 10,
     },
     headingLine1: {
         fontSize: 34,
-        fontWeight: 'bold',
         color: '#232323',
+        fontFamily:"Satoshi-Black"
     },
     headingLine2: {
         fontSize: 34,
-        fontWeight: 'bold',
+        fontFamily:"Satoshi-Black",
         color: '#232323',
     },
     headingLine3: {
         fontSize: 34,
-        fontWeight: 'bold',
         color: '#232323',
+        fontFamily:"Satoshi-Black"
     },
     paragraph: {
         fontSize: 20,
         color: '#9E9C9A',
         marginBottom: 20,
+        fontFamily:"Satoshi-Regular"
     },
     input: {
         borderWidth: 2,
@@ -150,6 +154,7 @@ const styles = StyleSheet.create({
         fontSize: 34,
         color: 'black',
         marginBottom: 20,
+        fontFamily:"Satoshi-Medium"
     },
     inputFilled: {
         borderColor: '#40838B', // Change border color when input is filled
@@ -167,14 +172,16 @@ const styles = StyleSheet.create({
     continueButtonText: {
         color:"#b9b9b9",
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily:"Satoshi-Medium"
     },
     continueButtonTextFilled:{
         color:"black"
     },
     skipButtonText:{
         alignSelf:"center",
-        color:"#b9b9b9"
+        color:"#b9b9b9",
+        fontFamily:"Satoshi-Regular"
+
     }
 });
 

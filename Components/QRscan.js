@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   infoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 15,
   },
   infoIcon: {
     marginRight: 5,
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     width: "100%",
     padding: 2,
+    fontFamily:"Satoshi-Medium"
   },
   qrContainer: {
     backgroundColor: 'white',
@@ -77,8 +78,8 @@ const styles = StyleSheet.create({
   connectorButtonText: {
     color: 'black',
     fontSize: 18,
-    fontWeight: '500',
     textAlign: 'center',
+    fontFamily:"Satoshi-Medium"
   },
 });
 

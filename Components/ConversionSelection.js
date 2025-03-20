@@ -26,7 +26,7 @@ const ConversionSelection = () => {
                           </TouchableOpacity>
                 
                           {/* Header */}
-                          <Text style={styles.header}>Connect your bank account</Text>
+                          <Text style={styles.header}>Convert to</Text>
                         </ImageBackground>
 
                 {/* Bank Account Card */}
@@ -117,13 +117,14 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "black",
         marginLeft: 5,
+        fontFamily:"Satoshi-Medium"
       },
     header: {
         fontSize: 26,
-        fontWeight: 'bold',
         textAlign: 'center',
         marginTop: 20,
         paddingBottom: 30,
+        fontFamily:"Satoshi-Black"
     },
     selectionContainer: {
         flexDirection: "row",
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         fontSize: 18,
-        fontWeight: "600",
+        fontFamily:"Satoshi-Bold"
     },
     confirmButton: {
         backgroundColor: '#e8e8e8',
@@ -191,7 +192,7 @@ const styles = StyleSheet.create({
     confirmButtonText: {
         color: '#9b9b9b',
         fontSize: 18,
-        fontWeight: '500',
         textAlign: 'center',
+        fontFamily:"Satoshi-Medium"
     },
 });

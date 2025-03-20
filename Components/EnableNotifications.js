@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'black',
         marginLeft: 5,
+        fontFamily:"Satoshi-Medium"
     },
     skipButton: {
         padding: 10,
@@ -123,18 +124,19 @@ const styles = StyleSheet.create({
     },
     headingLine1: {
         fontSize: 32,
-        fontWeight: 'bold',
         color: '#232323',
+        fontFamily:"Satoshi-Black"
     },
     headingLine2: {
         fontSize: 32,
-        fontWeight: 'bold',
         color: '#232323',
+        fontFamily:"Satoshi-Black"
     },
     paragraph: {
         fontSize: 16,
         color: '#9E9C9A',
         marginBottom: 10,
+        fontFamily:"Satoshi-Medium"
     },
     iconContainer: {
         justifyContent: 'center',
@@ -159,7 +161,7 @@ const styles = StyleSheet.create({
     enableButtonText: {
         color: 'black',
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily:"Satoshi-Bold"
     },
     notNowButton: {
         backgroundColor: '#f7f7f5',
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
     notNowButtonText: {
         color: '#9b9b9b',
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily:"Satoshi-Regular"
     },
 });
 

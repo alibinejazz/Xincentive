@@ -64,7 +64,7 @@ const CandlestickChartComponent = () => {
     paddingHorizontal: 5 // ✅ Slight padding for spacing
 }}>
     <Image source={arrowGreen} style={{ width: 20, height: 20 }} />
-    <Text style={{ color: "#9d9d9d", fontSize: 18, fontWeight: "400", marginLeft: 5, paddingRight:5 }}>1,445</Text>
+    <Text style={{ color: "#9d9d9d", fontSize: 18, fontFamily:"Satoshi-Medium", marginLeft: 5, paddingRight:5 }}>1,445</Text>
 </View>
 
 
@@ -114,7 +114,7 @@ const CandlestickChartComponent = () => {
       </ScrollView>
           <View style={{flexDirection:"row",justifyContent:"start", borderTopWidth:0.4, borderColor:"#ff0000", width:90, alignItems:"center", paddingLeft:5}}>
             <Image source={arrowRed} style={{width:20, height:20}}/>
-            <Text style={{color:"#9d9d9d", fontSize:18, fontWeight:400}}>1,245</Text>
+            <Text style={{color:"#9d9d9d", fontSize:18, fontFamily:"Satoshi-Medium"}}>1,245</Text>
           </View>
     </View>
   );

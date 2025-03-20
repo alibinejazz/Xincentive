@@ -149,9 +149,9 @@ const styles = StyleSheet.create({
     
     header: {
         fontSize: 26,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: '#000000',
+        fontFamily:"Satoshi-Black"
     },
     
     diamondBadge: {
@@ -195,10 +195,12 @@ const styles = StyleSheet.create({
     priceLabel: {
         fontSize: 16,
         color: 'gray',
+        fontFamily:"Satoshi-Medium"
     },
     price: {
         fontSize: 32,
         fontWeight: '500',
+        fontFamily:"Satoshi-Medium"
     },
     coinIcon: {
         width: 50,
@@ -215,6 +217,7 @@ const styles = StyleSheet.create({
     trendLabel: {
         fontSize: 16,
         color: 'gray',
+        fontFamily:"Satoshi-Medium"
     },
     trendIcon: {
         width: 10,
@@ -223,8 +226,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     trend: {
-        fontSize: 32,
-        fontWeight: '500',
+        fontSize: 28,
+        // fontWeight: '500',
+        fontFamily:"Satoshi-Medium"
     },
     chartContainer: {
         justifyContent: "center",
@@ -266,10 +270,12 @@ const styles = StyleSheet.create({
     dayText: {
         fontSize: 14,
         color: "#777",
+        fontFamily:"Satoshi-Regular"
     },
     dateText: {
         fontSize: 16,
-        fontWeight: "bold",
         color: "#000",
+        fontFamily:"Satoshi-Medium"
+
     },
 });

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     position: 'absolute',
-    top: '14.5%',
+    top: '16%',
     right: '7%',
     backgroundColor: 'white',
     borderRadius: 50,
@@ -101,13 +101,15 @@ successIcon: {
     textAlign: 'center',
     marginBottom: 20,
     width: "70%",
+    fontFamily:"Satoshi-Bold"
   },
   modalSubtitle: {
     fontSize: 18,
     textAlign: 'center',
     color: '#9f9f9f',
     marginBottom: 40,
-    width: "90%",
+    width: "85%",
+    fontFamily:"Satoshi-Medium"
   },
   doneButton: {
     backgroundColor: '#6ee17c',
@@ -120,6 +122,5 @@ successIcon: {
   doneButtonText: {
     color: 'black',
     fontSize: 16,
-    fontWeight: '500',
-  },
+    fontFamily:"Satoshi-Medium"  },
 });

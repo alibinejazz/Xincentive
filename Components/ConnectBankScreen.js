@@ -73,13 +73,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "black",
     marginLeft: 5,
+    fontFamily:"Satoshi-Medium"
   },
   header: {
     fontSize: 26,
     textAlign: 'center',
     marginTop: 20,
     paddingBottom: 30,
-    fontWeight: "bold",
+    fontFamily:"Satoshi-Black"
   },
   card: {
     backgroundColor: 'white',
@@ -113,9 +114,11 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 17,
     fontWeight: '500',
+    fontFamily:"Satoshi-Bold"
   },
   cardSubtitle: {
     fontSize: 16,
     marginTop: 10,
+    fontFamily:"Satoshi-Medium"
   },
 });

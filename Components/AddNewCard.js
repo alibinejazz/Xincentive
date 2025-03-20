@@ -48,7 +48,6 @@ const AddNewCard = () => {
             <Text style={styles.cardTitle}>Bank Account Details</Text>
             <Text style={styles.cardSubtitle}>Mastercard**** **** **** 0000</Text>
           </View>
-          <Icon name="chevron-right" size={24} color="black" />
         </TouchableOpacity>
 
         {/* Security Info */}
@@ -95,13 +94,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "black",
     marginLeft: 5,
+    fontFamily:"Satoshi-Medium"
   },
   header: {
     fontSize: 26,
     textAlign: 'center',
     marginTop: 20,
     paddingBottom: 30,
-    fontWeight: "bold"
+    fontFamily:"Satoshi-Black"
   },
   card: {
     backgroundColor: 'white',
@@ -151,13 +151,13 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 18,
-    fontWeight: "400",
-
+    fontFamily:"Satoshi-Medium"
   },
   cardSubtitle: {
     fontSize: 15,
     color: 'gray',
     marginTop: 5,
+    fontFamily:"Satoshi-Medium"
   },
   securityContainer: {
     flexDirection: "row",
@@ -171,5 +171,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     flexWrap: "wrap",
     width: 300,
+    fontFamily:"Satoshi-Medium"
   },
 });

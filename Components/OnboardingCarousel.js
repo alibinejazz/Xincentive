@@ -175,7 +175,7 @@ const OnboardingCarousel = ({ navigation }) => {
                   style={styles.signInLink}
                   onPress={() => navigation.navigate('AppsLogin')}
                 >
-                  Sign in
+                  Sign In
                 </Text>
               </Text>
             </TouchableOpacity>
@@ -218,6 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     fontWeight: '300',
+    fontFamily:"Satoshi-Medium"
   },
   progressContainer: {
     width: '100%',
@@ -246,10 +247,10 @@ const styles = StyleSheet.create({
   },
   headingContainer: {
     alignItems: 'center',
-    width:177,
+    width:245,
   },
   headingWidth300: {
-    width: 300, // Set width to 300 for first and second slides
+    width: 330, // Set width to 300 for first and second slides
   },
   heading: {
     fontSize: 28,
@@ -257,6 +258,7 @@ const styles = StyleSheet.create({
     fontWeight: 'semibold',
     textAlign: 'center',
     color: '#fff',
+    fontFamily:"Satoshi-Bold"
   },
   image: {
     width: 180,
@@ -294,20 +296,22 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 18,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily:"Satoshi-Bold"
   },
   loginButtonText: {
     color: '#ffffff',
-  },
+    },
   signInText: {
     color: '#ffffff',
     fontSize: 16,
     marginTop: 10,
     alignSelf: 'center',
+    fontFamily:"Satoshi-Regular"
   },
   signInLink: {
     color: '#ffffff', // Change to your desired highlight color
-    fontWeight: 'bold',
+    fontFamily:"Satoshi-Bold"
   },
 });
 

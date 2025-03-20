@@ -153,7 +153,7 @@ const Login = () => {
 
                 <Text style={styles.centeredText}>
                     Already have an account?{' '}
-                    <Text style={{ color: 'black', fontWeight: 'bold' }} onPress={() => navigation.navigate('AppsLogin')}>Log In</Text>
+                    <Text style={{ color: 'black', fontFamily:"Satoshi-Medium"}} onPress={() => navigation.navigate('AppsLogin')}>Log In</Text>
                 </Text>
             </View>
         </View>
@@ -171,11 +171,14 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
+        
     },
     backText: {
         fontSize: 16,
         color: 'black',
         marginLeft: 5,
+        fontFamily:"Satoshi-Medium"
+
     },
     contentContainer: {
         flex: 1,
@@ -183,7 +186,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 32,
-        fontWeight: 'bold',
+        fontFamily:"Satoshi-Black",
         marginBottom: 10,
         color: '#232323',
     },
@@ -192,8 +195,9 @@ const styles = StyleSheet.create({
     },
     paragraph: {
         fontSize: 18,
-        color: '#9E9C9A',
+        color: '#9d9c9a',
         marginBottom: 20,
+        fontFamily:"Satoshi-Regular"
     },
     inputContainer: {
         marginBottom: 40,
@@ -215,6 +219,8 @@ const styles = StyleSheet.create({
         color: '#9E9E9E',
         marginBottom: 5,
         marginHorizontal: 10,
+        fontFamily:"Satoshi-Regular"
+
     },
     mandatory: {
         color: 'red',
@@ -223,6 +229,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         fontSize: 24,
+        fontFamily:"Satoshi-Bold"
     },
     continueButton: {
         backgroundColor: '#F2F2F2',
@@ -236,15 +243,18 @@ const styles = StyleSheet.create({
     continueButtonText: {
         color: '#B8BBBA',
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily:"Satoshi-Bold"
     },
     continueButtonTextActive: {
-        color: '#FFFFFF', // White text when active
+        color: '#FFFFFF',
+        fontFamily:"Satoshi-Bold"
+        // White text when active
     },
     centeredText: {
         textAlign: 'center',
         marginTop: 20,
         color: '#888',
+        fontFamily:"Satoshi-Regular"
     },
 });
 

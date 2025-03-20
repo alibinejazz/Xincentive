@@ -99,9 +99,9 @@ const styles = StyleSheet.create({
 
     successText: {
         fontSize: 26,
-        fontWeight: '500',
         textAlign: 'center',
         marginBottom: 50,
+        fontFamily:"Satoshi-Medium"
     },
     okButton: {
         backgroundColor: '#6ee17c',
@@ -114,8 +114,8 @@ const styles = StyleSheet.create({
     okButtonText: {
         color: 'black',
         fontSize: 16,
-        fontWeight: '500',
-    },
+        fontFamily:"Satoshi-Medium"
+        },
     cancelButton: {
         backgroundColor: '#FFFFFF',
         paddingVertical: 15,
@@ -128,6 +128,6 @@ const styles = StyleSheet.create({
     cancelButtonText: {
         color: '#b2b6b7',
         fontSize: 16,
-        fontWeight: '500',
-    },
+        fontFamily:"Satoshi-Medium"
+        },
 });

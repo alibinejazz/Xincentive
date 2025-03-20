@@ -137,11 +137,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'black',
         marginBottom: 5,
-        marginTop: 30
+        marginTop: 30,
+        fontFamily:"Satoshi-Medium"
     },
     balance: {
         fontSize: 36,
-        fontWeight: '500',
+        fontFamily:"Satoshi-Bold"
     },
     inputWrapper: {
         backgroundColor: '#F5F5F5',
@@ -166,6 +167,7 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         color: '#3c3c3c',
+        fontFamily:"Satoshi-Medium"
     },
     input: {
         backgroundColor: '#ffffff',
@@ -174,7 +176,8 @@ const styles = StyleSheet.create({
         padding: 20,
         borderBottomLeftRadius: 12,
         borderBottomRightRadius: 12,
-        paddingBottom: 15
+        paddingBottom: 15,
+        fontFamily:"Satoshi-Medium"
     },
     priceTrendBorderWrapper: {
         width: '100%', // ✅ Ensures the border extends full width
@@ -197,10 +200,11 @@ const styles = StyleSheet.create({
     priceLabel: {
         fontSize: 16,
         color: 'gray',
+        fontFamily:"Satoshi-Medium"
     },
     price: {
         fontSize: 32,
-        fontWeight: '500',
+        fontFamily:"Satoshi-Bold"
     },
     coinIcon: {
         width: 50,
@@ -218,6 +222,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'gray',
         marginLeft: 10,
+        fontFamily:"Satoshi-Medium"
     },
     trendIcon: {
         width: 10,
@@ -227,7 +232,7 @@ const styles = StyleSheet.create({
     },
     trend: {
         fontSize: 32,
-        fontWeight: '500',
+        fontFamily:"Satoshi-Bold"
     },
     summaryOuterContainer: {
         padding: 20, // ✅ External padding for the whole summary section
@@ -249,19 +254,20 @@ const styles = StyleSheet.create({
     },
     summaryLabel: {
         fontSize: 20,
-        fontWeight: '500',
         color: 'black',
+        fontFamily:"Satoshi-Medium"
     },
     summaryValue: {
         fontSize: 20,
-        fontWeight: '500',
         color: 'black',
+        fontFamily:"Satoshi-Bold"
     },
     conversionFormula: {
-        fontSize: 16,
+        fontSize: 15,
         color: '#9fa1ae',
         marginVertical: 6,
         textAlign: 'left',
+        fontFamily:"Satoshi-Medium"
     },
     divider: {
         height: 1,
@@ -270,13 +276,13 @@ const styles = StyleSheet.create({
     },
     totalLabel: {
         fontSize: 17,
-        fontWeight: '400',
         color: 'black',
+        fontFamily:"Satoshi-Regular"
     },
     totalValue: {
         fontSize: 17,
-        fontWeight: '400',
         color: 'black',
+        fontFamily:"Satoshi-Regular"
     },
 
     confirmButtonContainer: {
@@ -297,5 +303,5 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '500',
         textAlign: 'center',
-    },
+        fontFamily:"Satoshi-Medium"    },
 });

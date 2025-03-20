@@ -80,10 +80,10 @@ const Explore = () => {
                 {/* Search Bar */}
                 <View style={styles.searchBarContainer}>
                     <View style={styles.searchBar}>
-                        <Icon name="search" size={20} color="#777" style={styles.searchIcon} />
+                        <Icon name="search" size={20} color="#cecdd2" style={styles.searchIcon} />
                         <TextInput
                             style={styles.searchInput}
-                            placeholder="Search..."
+                            placeholder="Search"
                             placeholderTextColor="#777"
                         />
                     </View>
@@ -165,9 +165,9 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 26,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: '#000000',
+        fontFamily:"Satoshi-Black"
     },
     diamondBadge: {
         position: 'absolute',
@@ -262,6 +262,7 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 16,
         color: '#000',
+        fontFamily:"Satoshi-Medium"
     },
     rowContainer: {
         flexDirection: 'row',
@@ -300,15 +301,18 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#A0A0A0',
         marginBottom: 5,
+        fontFamily:"Satoshi-Regular"
+    
     },
     rowText2: {
         fontSize: 18,
         marginBottom: 5,
+        fontFamily:"Satoshi-Regular"
     },
     rowText4: {
         fontSize: 18,
-        fontWeight: "bold",
         marginBottom: 5,
+        fontFamily:"Satoshi-Bold"
     },
     lineSeparator: {
         height: 1,
@@ -327,9 +331,11 @@ const styles = StyleSheet.create({
         marginRight: 10,
         borderWidth:1,
         borderColor:"#e8e8e8"
+        
     },
     optionText: {
         fontSize: 16,
         color: '#000',
+        fontFamily:"Satoshi-Medium"
     },
 });

@@ -60,10 +60,10 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontSize: 25,
-    fontWeight: '500',
     marginBottom: 10,
     textAlign:"left",
     width: '80%',
+    fontFamily:"Satoshi-Bold"
   },
   modalSubtitle: {
     fontSize: 18,
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     // textAlign: 'center',
     marginBottom: 30,
     width: '80%',
+    fontFamily:"Satoshi-Medium"
   },
   removeButton: {
     flexDirection: 'row',
@@ -87,8 +88,8 @@ const styles = StyleSheet.create({
   },
   removeButtonText: {
     fontSize: 16,
-    fontWeight: '500',
     color: 'black',
+    fontFamily:"Satoshi-Medium"
   },
   cancelButton: {
     width: '85%',

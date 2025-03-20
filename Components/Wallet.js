@@ -12,6 +12,7 @@ import {
 import BottomNav from './BottomNav';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const Wallet = () => {
   // Transaction data
@@ -62,6 +63,7 @@ const Wallet = () => {
     },
   ];
 
+  const navigation = useNavigation();
   // Action buttons data
   const actionButtons = [
     { id: '1', icon: 'refresh', label: 'Convert' },
@@ -99,7 +101,7 @@ const Wallet = () => {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Wallet</Text>
-          <TouchableOpacity style={styles.addButton}>
+          <TouchableOpacity style={styles.addButton} onPress={()=> navigation.navigate("ConnectBankScreen")}>
             <Icon name="add" size={28} color="#000" />
           </TouchableOpacity>
         </View>
@@ -157,9 +159,9 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 28,
-    fontWeight: 'bold',
     color: '#000',
-    alignSelf:"center"
+    alignSelf:"center",
+    fontFamily:"Satoshi-Black"
   },
   addButton: {
     width: 40,
@@ -179,7 +181,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#444',
     marginBottom: 5,
-    
+    fontFamily:"Satoshi-Medium"
   },
   balanceRow: {
     flexDirection: 'row',
@@ -187,18 +189,20 @@ const styles = StyleSheet.create({
   },
   balanceAmount: {
     fontSize: 42,
-    fontWeight: 'bold',
     color: '#000',
+    fontFamily:"Satoshi-Bold"
   },
   balanceCurrency: {
     fontSize: 24,
     color: '#000',
     fontWeight: '500',
+    fontFamily:"Satoshi-Black"
   },
   walletAddress: {
     fontSize: 14,
     color: '#777',
     marginTop: 5,
+    fontFamily:"Satoshi-Regular"
   },
   tokenLabel: {
     position: 'absolute',
@@ -236,8 +240,8 @@ const styles = StyleSheet.create({
   },
   actionButtonLabel: {
     fontSize: 14,
-    fontWeight:"bold",
     color: '#444',
+    fontFamily:"Satoshi-Bold"
   },
   transactionsContainer: {
     flex: 1,
@@ -275,9 +279,9 @@ const styles = StyleSheet.create({
   },
   merchantName: {
     fontSize: 18,
-    fontWeight: '500',
     color: '#000',
     marginBottom: 5,
+    fontFamily:"Satoshi-Bold"
   },
   statusBadge: {
     paddingHorizontal: 12,
@@ -287,20 +291,22 @@ const styles = StyleSheet.create({
   },
   statusText: {
     fontSize: 12,
-    fontWeight: '500',
+    fontFamily:"Satoshi-Medium"
   },
   transactionRight: {
     alignItems: 'flex-end',
   },
   amount: {
     fontSize: 18,
-    fontWeight: '500',
     color: '#000',
     marginBottom: 5,
+    fontFamily:"Satoshi-Medium"
+
   },
   tokens: {
     fontSize: 14,
     color: '#777',
+    fontFamily:"Satoshi-Medium"
   },
 });
 
