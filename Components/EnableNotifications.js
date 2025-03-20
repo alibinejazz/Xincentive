@@ -10,10 +10,12 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import NotificationIcon from '../assets/NotificationsIcon.png'; // Replace with your icon
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const { height } = Dimensions.get('window'); // Get screen height
 
-const EnableNotifications = ({ navigation }) => {
+const EnableNotifications = () => {
+    const navigation = useNavigation();
     // Handle back button press
     const handleBack = () => {
         navigation.goBack();
@@ -75,10 +77,10 @@ const EnableNotifications = ({ navigation }) => {
 
             {/* Two Buttons */}
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.enableButton} onPress={handleEnable}>
+                <TouchableOpacity style={styles.enableButton} onPress={() => navigation.navigate('Market')}>
                     <Text style={styles.enableButtonText}>Yes, Notify Me</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.notNowButton} onPress={handleNotNow}>
+                <TouchableOpacity style={styles.notNowButton} onPress={() => navigation.navigate('Market')}>
                     <Text style={styles.notNowButtonText}>Skip</Text>
                 </TouchableOpacity>
             </View>

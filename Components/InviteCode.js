@@ -68,12 +68,12 @@ const InviteCode = () => {
             />
 
             {/* Continue Button */}
-            <TouchableOpacity
+            <TouchableOpacity 
                 style={[
                     styles.continueButton,
                     inputValue !== '' && styles.continueButtonFilled, // Apply filled style
                 ]}
-                onPress={handleContinue}
+                onPress={() => navigation.navigate('EnableNotifications')}
                 disabled={inputValue === ''}
             >
                 <Text style={[styles.continueButtonText,
@@ -81,6 +81,7 @@ const InviteCode = () => {
                 ]}>Continue</Text>
             </TouchableOpacity>
             <TouchableOpacity
+            onPress={() => navigation.navigate('EnableNotifications')}
             >
                 <Text style={styles.skipButtonText}>Skip</Text>
             </TouchableOpacity>

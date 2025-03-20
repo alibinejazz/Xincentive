@@ -162,18 +162,18 @@ const OnboardingCarousel = ({ navigation }) => {
         {/* Button */}
         <View style={styles.buttonContainer}>
           {/* Get Started Button */}
-          <TouchableOpacity style={styles.button} onPress={goToNextSlide}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
             <Text style={styles.buttonText}>Get Started</Text>
           </TouchableOpacity>
 
           {/* Render "Have an account? Sign in" on all slides except the last one */}
           {currentIndex !== onboardingData.length - 1 && (
-            <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+            <TouchableOpacity onPress={() => navigation.navigate('AppsLogin')}>
               <Text style={styles.signInText}>
                 Have an account?{' '}
                 <Text
                   style={styles.signInLink}
-                  onPress={() => navigation.navigate('SignIn')}
+                  onPress={() => navigation.navigate('AppsLogin')}
                 >
                   Sign in
                 </Text>
@@ -185,7 +185,7 @@ const OnboardingCarousel = ({ navigation }) => {
           {currentIndex === onboardingData.length - 1 && (
             <TouchableOpacity
               style={[styles.button, styles.loginButton]}
-              onPress={() => navigation.navigate('SignIn')}
+              onPress={() => navigation.navigate('Login')}
             >
               <Text style={[styles.buttonText, styles.loginButtonText]}>Login</Text>
             </TouchableOpacity>

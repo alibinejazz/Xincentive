@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const { height } = Dimensions.get('window'); // Get screen height
 
@@ -20,6 +21,7 @@ const AppsLogin = () => {
         { id: 3, image: require('../assets/Apple.png'), text: 'Continue with Apple' }, // Replace with your image
         { id: 4, image: require('../assets/Email.png'), text: 'Continue with Email' }, // Replace with your image
     ];
+    const navigation = useNavigation();
 
     // Handle button press
     const handleButtonPress = (id) => {
@@ -56,7 +58,7 @@ const AppsLogin = () => {
 
                 {/* Paragraph */}
                 <Text style={styles.paragraph}>
-                    Register your account <Text style={{fontWeight:"bold",color:"black"}}>Sign Up</Text>
+                    Register your account <Text style={{fontWeight:"bold",color:"black"}} onPress={() => navigation.navigate('Login')}>Sign Up</Text>
                 </Text>
             </ScrollView>
         </View>

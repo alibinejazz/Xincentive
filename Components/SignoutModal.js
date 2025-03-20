@@ -1,8 +1,11 @@
-import React from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const SignOutModal = ({ visible, onConfirm, onCancel }) => {
+  const navigation = useNavigation();
   return (
      <Modal transparent={true} visible={visible} animationType="fade">
           <View style={styles.overlay}>
@@ -17,7 +20,7 @@ const SignOutModal = ({ visible, onConfirm, onCancel }) => {
               <Text style={styles.successText}>Sign Out?</Text>
               <Text style={styles.modalSubtitle}> Are you sure you want to Sign Out?</Text>
               {/* Ok Button */}
-              <TouchableOpacity style={styles.okButton} onPress={onCancel}>
+              <TouchableOpacity style={styles.okButton} onPress={() => navigation.navigate('AppsLogin')}>
                 <Text style={styles.okButtonText}>Ok</Text>
               </TouchableOpacity>
     

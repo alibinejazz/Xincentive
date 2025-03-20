@@ -1,14 +1,15 @@
+import { Keyboard, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Keyboard, Platform } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import home from "../assets/home.png";
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Image } from 'react-native';
+import activeUser from "../assets/activeUser.png";
+import activeWallet from "../assets/activeWallet.png";
 import explore from "../assets/explore.png";
+import home from "../assets/home.png";
 import user from "../assets/user.png";
 import wallet from "../assets/wallet.png";
-import activeWallet from "../assets/activeWallet.png";
-import activeUser from "../assets/activeUser.png";
-import { Image } from 'react-native';
 
 const BottomNav = () => {
   const navigation = useNavigation();
@@ -34,9 +35,9 @@ const BottomNav = () => {
   const profileScreens = ['MyProfile', 'EditProfile', "Subscription", "Terms"];
 
   const tabs = [
-    { name: 'Home', icon: home, screen: 'HomeScreen' },
-    { name: 'Explore', icon: explore, screen: 'ExploreScreen' },
-    { name: 'Wallet', icon: wallet, activeIcon: activeWallet, screen: 'ConnectBankScreen' },
+    { name: 'Home', icon: home, screen: 'Market' },
+    { name: 'Explore', icon: explore, screen: 'Explore' },
+    { name: 'Wallet', icon: wallet, activeIcon: activeWallet, screen: 'Wallet' },
     { name: 'Profile', icon: user, activeIcon: activeUser, screen: 'MyProfile' },
   ];
 
