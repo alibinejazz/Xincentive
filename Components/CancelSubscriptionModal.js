@@ -1,5 +1,6 @@
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
+
 import SubscriptionCancelledModal from './SubscriptionCancelledModal';
 
 const CancelSubscriptionModal = ({ visible, onClose }) => {
@@ -78,19 +79,21 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   modalTitle: {
-    fontSize: 25,
-    fontWeight: '500',
+    fontSize: 24,
+    // fontWeight: '500',
     marginBottom: 15,
     textAlign: 'center',
     width: '80%',
     marginTop:15,
+    fontFamily:"Satoshi-Medium"//
   },
   modalSubtitle: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#9f9f9f',
     marginBottom: 30,
     width: '90%',
     textAlign: 'center',
+    fontFamily:"Satoshi-Regular"//
   },
   confirmButton: {
     flexDirection: 'row',
@@ -104,8 +107,9 @@ const styles = StyleSheet.create({
   },
   confirmButtonText: {
     fontSize: 16,
-    fontWeight: '500',
+    // fontWeight: '500',
     color: 'black',
+    fontFamily:"Satoshi-Medium"//
   },
   cancelButton: {
     width: '85%',
@@ -117,7 +121,8 @@ const styles = StyleSheet.create({
   },
   cancelButtonText: {
     fontSize: 16,
-    fontWeight: '500',
+    // fontWeight: '500',
     color: '#9e9e9e',
+    fontFamily:"Satoshi-Medium"//
   },
 });

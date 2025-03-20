@@ -1,6 +1,7 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import React from 'react';
 import info from "../assets/info.png"
 
 const QRScan = () => {
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   infoText: {
-    fontSize: 20,
+    fontSize: 16,
     color: '#3c3c3c',
     // flexWrap: 'wrap',
     textAlign: "left",

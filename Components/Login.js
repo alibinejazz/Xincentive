@@ -139,7 +139,7 @@ const Login = () => {
                         isInputFilled() && styles.continueButtonActive,
                     ]}
                     disabled={!isInputFilled()}
-                    onPress={step < 3 ? handleContinue : () => {handleContinue();}} // Navigate if step is 3
+                    onPress={step < 3 ? handleContinue : () =>  navigation.navigate('Otp')} // Navigate if step is 3
                 >
                     <Text
                         style={[
@@ -153,7 +153,7 @@ const Login = () => {
 
                 <Text style={styles.centeredText}>
                     Already have an account?{' '}
-                    <Text style={{ color: 'black', fontFamily:"Satoshi-Medium"}} onPress={() => navigation.navigate('AppsLogin')}>Log In</Text>
+                    <Text style={{ color: 'black', fontFamily:"Satoshi-Medium", fontSize:14}} onPress={() => navigation.navigate('AppsLogin')}>Log In</Text>
                 </Text>
             </View>
         </View>
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
         
     },
     backText: {
-        fontSize: 16,
+        fontSize: 14,
         color: 'black',
         marginLeft: 5,
         fontFamily:"Satoshi-Medium"
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     heading: {
-        fontSize: 32,
+        fontSize: 28,
         fontFamily:"Satoshi-Black",
         marginBottom: 10,
         color: '#232323',
@@ -194,14 +194,14 @@ const styles = StyleSheet.create({
         width: 250,
     },
     paragraph: {
-        fontSize: 18,
+        fontSize: 16,
         color: '#9d9c9a',
         marginBottom: 20,
         fontFamily:"Satoshi-Regular"
     },
     inputContainer: {
         marginBottom: 40,
-        borderWidth: 3,
+        borderWidth: 1,
         borderColor: '#F2F2F2',
         padding: 10,
         borderRadius: 10,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     inputLabel: {
-        fontSize: 16,
+        fontSize: 14,
         color: '#9E9E9E',
         marginBottom: 5,
         marginHorizontal: 10,
@@ -254,7 +254,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 20,
         color: '#888',
-        fontFamily:"Satoshi-Regular"
+        fontFamily:"Satoshi-Regular",
+        fontSize:14
     },
 });
 

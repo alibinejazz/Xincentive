@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, Dimensions, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
+import { Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+
 import BottomNav from './BottomNav'; // Import BottomNav
-import QRScan from './QRscan';
 import CryptoConversion from './CryptoConversion';
-import dollars from "../assets/dollars.png";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import LinearBackground from "../assets/gradient.png";
+import LinearGradient from 'react-native-linear-gradient';
+import QRScan from './QRscan';
 import crypto from "../assets/crypto.png";
-import LinearBackground from "../assets/gradient.png"; 
+import dollars from "../assets/dollars.png";
+import { useNavigation } from '@react-navigation/native';
 
 const ConversionSelection = () => {
     const navigation = useNavigation();
@@ -108,13 +109,13 @@ const styles = StyleSheet.create({
       backButton: {
         position: 'absolute',
         top: 20,
-        left: 20,
+        left: 0,
         padding: 10,
         flexDirection: "row",
         alignItems: "center",
       },
       backText: {
-        fontSize: 16,
+        fontSize: 14,
         color: "black",
         marginLeft: 5,
         fontFamily:"Satoshi-Medium"

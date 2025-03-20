@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         width: '100%',
         textAlign: 'center',
+        fontFamily:"Satoshi-Medium"//
       },
     closeButton: {
       position: 'absolute',
@@ -80,10 +81,11 @@ const styles = StyleSheet.create({
       marginBottom: 20,
     },
     successText: {
-      fontSize: 26,
-      fontWeight: '500',
+      fontSize: 24,
+      // fontWeight: '500',
       textAlign: 'center',
       marginBottom: 20,
+      fontFamily:"Satoshi-Medium"//
     },
     okButton: {
       backgroundColor: '#6ee17c',
@@ -96,7 +98,8 @@ const styles = StyleSheet.create({
     okButtonText: {
       color: 'black',
       fontSize: 16,
-      fontWeight: '500',
+      // fontWeight: '500',
+      fontFamily:"Satoshi-Medium"//
     },
     cancelButton: {
       backgroundColor: '#FFFFFF',
@@ -110,6 +113,7 @@ const styles = StyleSheet.create({
     cancelButtonText: {
       color: '#b2b6b7',
       fontSize: 16,
-      fontWeight: '500',
+      // fontWeight: '500',
+      fontFamily:"Satoshi-Medium"//
     },
   });

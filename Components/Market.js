@@ -1,12 +1,13 @@
-import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Image, FlatList, Animated } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Animated, FlatList, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useRef, useState } from 'react';
+
 import BottomNav from './BottomNav';
+import CandlestickChartComponent from './CandleStickChartExample';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png"; // Background Image
 import blacktri from "../assets/blacktri.png";
-import CandlestickChartComponent from './CandleStickChartExample';
 import diamond from "../assets/diamond.png"
+import { useNavigation } from '@react-navigation/native';
 
 const Market = () => {
     const navigation = useNavigation();
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
     },
     
     header: {
-        fontSize: 26,
+        fontSize: 24,
         textAlign: 'center',
         color: '#000000',
         fontFamily:"Satoshi-Black"
@@ -161,8 +162,8 @@ const styles = StyleSheet.create({
     },
     
     diamondCircle: {
-        width: 60, 
-        height: 60,
+        width: 56, 
+        height: 56,
         borderRadius: 50, // Makes it a perfect circle
         backgroundColor: '#6ee17c', // Green background
         borderWidth: 1.5,
@@ -172,8 +173,8 @@ const styles = StyleSheet.create({
     },
     
     diamondIcon: {
-        width: 20, // Adjust size for diamond
-        height: 20,
+        // width: 20, // Adjust size for diamond
+        // height: 20,
     },
     
     priceTrendBorderWrapper: {
@@ -217,6 +218,7 @@ const styles = StyleSheet.create({
     trendLabel: {
         fontSize: 16,
         color: 'gray',
+        alignSelf:"center",
         fontFamily:"Satoshi-Medium"
     },
     trendIcon: {

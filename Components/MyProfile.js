@@ -1,16 +1,17 @@
+import { Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
+
 import BottomNav from './BottomNav';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import LinearBackground from "../assets/gradient.png";
+import LinearGradient from 'react-native-linear-gradient';
 import SignoutModal from './SignoutModal';
 import creditcard from "../assets/creditcard.png";
+import edit from "../assets/edit.png";
+import signout from "../assets/signout.png";
 import subscription from "../assets/subscription.png";
 import terms from "../assets/terms.png";
-import signout from "../assets/signout.png";
-import edit from "../assets/edit.png";
-import LinearBackground from "../assets/gradient.png";
+import { useNavigation } from '@react-navigation/native';
 
 const MyProfile = () => {
   const navigation = useNavigation();
@@ -102,25 +103,27 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     top: 20,
-    left: 20,
+    left: 0,
     padding: 10,
     flexDirection: "row",
     alignItems: "center",
   },
   backText: {
-    fontSize: 16,
+    fontSize: 14,
     color: "black",
     marginLeft: 5,
+    fontFamily:"Satoshi-Medium"
   },
   editButton: {
-    padding: 7,
+    marginRight: 0,
     marginBottom: 30,
   },
   header: {
-    fontSize: 26,
-    fontWeight: 'bold',
+    fontSize: 24,
+    // fontWeight: 'bold',
     textAlign: 'center',
     paddingBottom: 30,
+    fontFamily:"Satoshi-Black",
     flex: 1,
   },
   profileCard: {
@@ -138,17 +141,21 @@ const styles = StyleSheet.create({
   },
   profileName: {
     color: "#7d7d7d",
-    fontSize: 20,
-    fontWeight: '500',
+    fontSize: 16,
+    // fontWeight: '500',
+    fontFamily:"Satoshi-Medium",
     marginBottom: 25,
   },
   profileEmail: {
     fontSize: 16,
     color: 'gray',
+    fontFamily:"Satoshi-Medium",
+    marginBottom:4,
   },
   profilePhone: {
     fontSize: 16,
     color: 'gray',
+    fontFamily:"Satoshi-Medium"
   },
   menuItem: {
     flexDirection: 'row',
@@ -167,8 +174,9 @@ const styles = StyleSheet.create({
   menuText: {
     flex: 1,
     fontSize: 16,
-    marginLeft: 10,
-    fontWeight: "500",
+    marginLeft: 25,
+    // fontWeight: "500",
+    fontFamily:"Satoshi-Medium"
   },
   menuIcon: {
     width: 24,
@@ -180,5 +188,6 @@ const styles = StyleSheet.create({
     color: 'gray',
     marginTop: 40,
     marginLeft: 20, // More space at the bottom
+    fontFamily:"Satoshi-Medium"
   },
 });

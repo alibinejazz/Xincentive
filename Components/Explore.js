@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
         position: "relative", // Ensures the diamond doesn’t shift Explore text
     },
     header: {
-        fontSize: 26,
+        fontSize: 24,
         textAlign: 'center',
         color: '#000000',
         fontFamily:"Satoshi-Black"
@@ -175,8 +175,8 @@ const styles = StyleSheet.create({
         top: -15, // Aligns it with the Explore text
     },
     diamondCircle: {
-        width: 60,
-        height: 60,
+        width: 56,
+        height: 56,
         borderRadius: 50, // Makes it a perfect circle
         backgroundColor: '#fff', // Green background
         borderWidth: 1.5,
@@ -185,8 +185,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     diamondIcon: {
-        width: 20, // Adjust size for diamond
-        height: 20,
+        // width: 20, // Adjust size for diamond
+        // height: 20,
     },
     priceTrendBorderWrapper: {
         width: '90%',
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
     },
     searchInput: {
         flex: 1,
-        fontSize: 16,
+        fontSize: 14,
         color: '#000',
         fontFamily:"Satoshi-Medium"
     },

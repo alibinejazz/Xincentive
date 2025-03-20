@@ -1,9 +1,10 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import BottomNav from './BottomNav';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png"; // Background Image
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const Terms = () => {
     const navigation = useNavigation();
@@ -25,7 +26,7 @@ const Terms = () => {
 
                 {/* Terms Content */}
                 <View style={styles.clauseContainer}>
-                    <Text style={styles.clauseTitle}> 1. Clause 1</Text>
+                    <Text style={styles.clauseTitle}>1. Clause 1</Text>
                     <Text style={styles.clauseText}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust
@@ -35,14 +36,14 @@ const Terms = () => {
                 </View>
 
                 <View style={styles.clauseContainer}>
-                    <Text style={styles.clauseTitle}> 2. Clause 2</Text>
+                    <Text style={styles.clauseTitle}>2. Clause 2</Text>
                     <Text style={styles.clauseText}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust of the printing and typesetting industry. Lorem Ipsum has been the indust Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
                     </Text>
                 </View>
 
                 <View style={styles.clauseContainer}>
-                    <Text style={styles.clauseTitle}> 3. Clause 3</Text>
+                    <Text style={styles.clauseTitle}>3. Clause 3</Text>
                     <Text style={styles.clauseText}>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industLorem Ipsum has been the industry's standard dummy text ever since the 1500s...
                     </Text>
@@ -75,39 +76,47 @@ const styles = StyleSheet.create({
     backButton: {
         position: 'absolute',
         top: 20,
-        left: 20,
+        left: 0,
         padding: 10,
         flexDirection: "row",
         alignItems: "center",
     },
     backText: {
-        fontSize: 16,
+        fontSize: 14,
         color: "black",
         marginLeft: 5,
+        fontFamily:"Satoshi-Medium"
     },
     headerTextContainer: {
         flex: 1,
     },
     header: {
-        fontSize: 26,
-        fontWeight: 'bold',
+        fontSize: 32,
+        // fontWeight: 'bold',
+        fontFamily:"Satoshi-Black",
         textAlign: 'left',
-        color: '#000000', // Ensure visibility on background
+        color: '#000000',
+        marginBottom:6, // Ensure visibility on background
     },
     headerSubText: {
         color: "#8b8b8b",
         fontSize: 14,
+        fontFamily:"Satoshi-Medium"
     },
     clauseContainer: {
         padding: 20,
     },
     clauseTitle: {
         fontSize: 20,
-        fontWeight: "600",
+        // fontWeight: "600",
+        fontFamily:"Satoshi-Black",
+        marginBottom:10,
     },
     clauseText: {
         color: "#7e7e7e",
-        fontSize: 18,
-        fontWeight: "300",
+        fontSize: 16,
+        fontFamily:"Satoshi-Regular",
+        lineHeight:28
+        // fontWeight: "300",
     },
 });

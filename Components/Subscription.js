@@ -1,12 +1,13 @@
+import { Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import BottomNav from './BottomNav';
 import CancelSubscriptionModal from './CancelSubscriptionModal';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import LinearBackground from "../assets/gradient.png"; // Background Image
 import cancel from "../assets/cancel.png";
 import diamond from "../assets/diamond.png";
-import LinearBackground from "../assets/gradient.png"; // Background Image
+import { useNavigation } from '@react-navigation/native';
 
 const Subscription = () => {
     const navigation = useNavigation();
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     backButton: {
         position: 'absolute',
         top: 20,
-        left: 20,
+        left: 0,
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
@@ -110,12 +111,13 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     header: {
-        fontSize: 26,
-        fontWeight: 'bold',
+        fontSize: 24,
+        // fontWeight: 'bold',
         textAlign: 'center',
         paddingBottom: 30,
         flex: 1,
-        color: '#000000', // Ensures visibility on the background
+        color: '#000000', 
+        fontFamily:"Satoshi-Black"// Ensures visibility on the background
     },
     card: {
         flexDirection: 'row',
@@ -151,17 +153,20 @@ const styles = StyleSheet.create({
     },
     title: {
         color: 'black',
-        fontSize: 20,
-        fontWeight: '500',
+        fontSize: 16,
+        // fontWeight: '500',
         marginBottom: 10,
+        fontFamily:"Satoshi-Medium"//
     },
     profileText: {
-        fontSize: 16,
+        fontSize: 14.11,
         color: 'black',
+        fontFamily:"Satoshi-Medium"//
     },
     activeText: {
         color: '#6bde79',
         fontSize: 16,
+        fontFamily:"Satoshi-Medium"//
     },
     upgradeButton: {
         flexDirection: 'row',
@@ -169,14 +174,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#6ee17c',
         width: '35%',
         borderRadius: 40,
-        padding: 10,
+        padding: 8,
         borderWidth: 1.5,
         borderColor: '#fffe6f',
         justifyContent: 'center',
         height: '80%',
     },
     upgradeText: {
-        fontSize: 15,
+        fontSize: 13.14,
+        fontFamily:"Satoshi-Medium"//
     },
     row: {
         flexDirection: 'row',

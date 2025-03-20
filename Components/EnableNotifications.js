@@ -40,9 +40,9 @@ const EnableNotifications = () => {
     };
 
     return (
-        <View style={styles.container}>
-            {/* Header with Back and Skip Buttons */}
-            <View style={styles.header}>
+        <>
+        <View style={styles.screenContainer}>
+        <View style={styles.header}>
                 <TouchableOpacity style={styles.backButton} onPress={handleBack}>
                     <Icon name="chevron-left" size={24} color="black" />
                     <Text style={styles.backText}>Back</Text>
@@ -51,6 +51,8 @@ const EnableNotifications = () => {
                     <Text style={styles.skipText}>Skip</Text>
                 </TouchableOpacity>
             </View>
+        
+        <View style={styles.container}>
 
             {/* Heading */}
             <View style={styles.headingContainer}>
@@ -60,7 +62,7 @@ const EnableNotifications = () => {
 
             {/* Two Paragraphs */}
             <Text style={styles.paragraph}>
-                Get notified about important updates, reminders, and more.
+            This will allow us to send you useful notifications and activity.
             </Text>
             <Text style={styles.paragraph}>
                 You can change this later in your settings.
@@ -85,14 +87,19 @@ const EnableNotifications = () => {
                 </TouchableOpacity>
             </View>
         </View>
+        </View>
+        </>
     );
 };
 
 const styles = StyleSheet.create({
+    screenContainer: {
+        flex: 1,
+        backgroundColor: '#f7f7f5', // Background color for the entire screen
+    },
     container: {
         flex: 1,
-        backgroundColor: '#f7f7f5',
-        paddingHorizontal: 20,
+        paddingHorizontal: 20, // Consistent horizontal padding
     },
     header: {
         flexDirection: 'row',
@@ -100,13 +107,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 15,
         marginBottom: 20,
+        padding:10
     },
     backButton: {
         flexDirection: 'row',
         alignItems: 'center',
     },
     backText: {
-        fontSize: 16,
+        fontSize: 14,
         color: 'black',
         marginLeft: 5,
         fontFamily:"Satoshi-Medium"
@@ -115,20 +123,20 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     skipText: {
-        fontSize: 16,
+        fontSize: 14,
         color: '#9e9e9e',
-        fontWeight: 'bold',
+        fontFamily:"Satoshi-Medium"
     },
     headingContainer: {
         marginBottom: 20,
     },
     headingLine1: {
-        fontSize: 32,
+        fontSize: 28,
         color: '#232323',
         fontFamily:"Satoshi-Black"
     },
     headingLine2: {
-        fontSize: 32,
+        fontSize: 28,
         color: '#232323',
         fontFamily:"Satoshi-Black"
     },
@@ -161,7 +169,7 @@ const styles = StyleSheet.create({
     enableButtonText: {
         color: 'black',
         fontSize: 16,
-        fontFamily:"Satoshi-Bold"
+        fontFamily:"Satoshi-Medium"
     },
     notNowButton: {
         backgroundColor: '#f7f7f5',
@@ -173,8 +181,8 @@ const styles = StyleSheet.create({
     },
     notNowButtonText: {
         color: '#9b9b9b',
-        fontSize: 16,
-        fontFamily:"Satoshi-Regular"
+        fontSize: 14,
+        fontFamily:"Satoshi-Medium"
     },
 });
 

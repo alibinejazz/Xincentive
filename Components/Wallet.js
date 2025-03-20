@@ -101,7 +101,7 @@ const Wallet = () => {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Wallet</Text>
-          <TouchableOpacity style={styles.addButton} onPress={()=> navigation.navigate("ConnectBankScreen")}>
+          <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate("ConnectBankScreen")}>
             <Icon name="add" size={28} color="#000" />
           </TouchableOpacity>
         </View>
@@ -153,24 +153,26 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center', // Center the title
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 50,
+    position: 'relative', // For absolute positioning of the add button
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 24,
     color: '#000',
-    alignSelf:"center",
-    fontFamily:"Satoshi-Black"
+    fontFamily: 'Satoshi-Black',
   },
   addButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    borderColor:"black",
-    borderWidth:1,
+    borderColor: 'black',
+    borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'absolute', // Position the add button absolutely
+    right: 0, // Place it on the right
   },
   balanceContainer: {
     alignItems: 'center',
@@ -178,10 +180,10 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   balanceLabel: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#444',
     marginBottom: 5,
-    fontFamily:"Satoshi-Medium"
+    fontFamily: 'Satoshi-Medium',
   },
   balanceRow: {
     flexDirection: 'row',
@@ -190,32 +192,36 @@ const styles = StyleSheet.create({
   balanceAmount: {
     fontSize: 42,
     color: '#000',
-    fontFamily:"Satoshi-Bold"
+    fontFamily: 'Satoshi-Bold',
   },
   balanceCurrency: {
     fontSize: 24,
     color: '#000',
     fontWeight: '500',
-    fontFamily:"Satoshi-Black"
+    fontFamily: 'Satoshi-Black',
   },
   walletAddress: {
     fontSize: 14,
     color: '#777',
     marginTop: 5,
-    fontFamily:"Satoshi-Regular"
+    backgroundColor:"#f3f3f5",
+    padding:6,
+    borderRadius:25,
+    fontFamily: 'Satoshi-Regular',
   },
   tokenLabel: {
     position: 'absolute',
     right: 30,
     top: 0,
-    borderWidth:1,
-    borderColor:"#e8e8e8",
-    paddingVertical:2,
-    paddingHorizontal:4,
-    borderRadius:25,
+    borderWidth: 1,
+    borderColor: '#e8e8e8',
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    borderRadius: 25,
     fontSize: 14,
     fontWeight: '500',
     color: '#000',
+    backgroundColor:"#fff"
   },
   actionButtonsContainer: {
     flexDirection: 'row',
@@ -241,7 +247,7 @@ const styles = StyleSheet.create({
   actionButtonLabel: {
     fontSize: 14,
     color: '#444',
-    fontFamily:"Satoshi-Bold"
+    fontFamily: 'Satoshi-Bold',
   },
   transactionsContainer: {
     flex: 1,
@@ -281,7 +287,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#000',
     marginBottom: 5,
-    fontFamily:"Satoshi-Bold"
+    fontFamily: 'Satoshi-Bold',
   },
   statusBadge: {
     paddingHorizontal: 12,
@@ -291,7 +297,7 @@ const styles = StyleSheet.create({
   },
   statusText: {
     fontSize: 12,
-    fontFamily:"Satoshi-Medium"
+    fontFamily: 'Satoshi-Medium',
   },
   transactionRight: {
     alignItems: 'flex-end',
@@ -300,13 +306,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#000',
     marginBottom: 5,
-    fontFamily:"Satoshi-Medium"
-
+    fontFamily: 'Satoshi-Medium',
   },
   tokens: {
     fontSize: 14,
     color: '#777',
-    fontFamily:"Satoshi-Medium"
+    
+    fontFamily: 'Satoshi-Medium',
   },
 });
 

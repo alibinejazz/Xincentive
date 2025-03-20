@@ -1,13 +1,14 @@
+import { Image, ImageBackground, KeyboardAvoidingView, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Modal, ScrollView, Image, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import BottomNav from './BottomNav';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import LinearBackground from "../assets/gradient.png"; // Background Image
 import edit from "../assets/edit.png";
-import user from "../assets/User.png";
 import emails from "../assets/email.png";
 import phone from "../assets/phone.png";
-import LinearBackground from "../assets/gradient.png"; // Background Image
+import { useNavigation } from '@react-navigation/native';
+import user from "../assets/User.png";
 
 const EditProfile = () => {
     const navigation = useNavigation();
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
     backButton: {
         position: 'absolute',
         top: 20,
-        left: 20,
+        left: 0,
         padding: 10,
         flexDirection: "row",
         alignItems: "center",
@@ -160,16 +161,17 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     editButton: {
-        padding: 7,
+        
         marginBottom: 30,
     },
     header: {
-        fontSize: 26,
-        fontWeight: 'bold',
+        fontSize: 24,
+        // fontWeight: 'bold',
         textAlign: 'center',
         paddingBottom: 30,
         flex: 1,
-        color: '#000000', // Ensure text is visible on background
+        color: '#000000', 
+        fontFamily:"Satoshi-Black"//// Ensure text is visible on background
     },
     updateProfileCard: {
         backgroundColor: 'white',
@@ -207,11 +209,13 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 14,
         color: '#888',
-        fontWeight: '500',
+        // fontWeight: '500',
+        fontFamily:"Satoshi-Medium"//
     },
     input: {
-        fontSize: 25,
+        fontSize: 24,
         color: '#000',
+        fontFamily:"Satoshi-Medium"//
     },
     saveButton: {
         paddingVertical: 18,
@@ -223,9 +227,9 @@ const styles = StyleSheet.create({
         width: "90%",
     },
     saveButtonText: {
-        color: '#bababa',
-        fontSize: 18,
-        fontWeight: '500',
+        color: 'black',
+        fontSize: 16,
+        fontFamily:"Satoshi-Medium",
         textAlign: 'center',
     },
     modalContainer: {
@@ -248,12 +252,15 @@ const styles = StyleSheet.create({
     modalText: {
         color: 'white',
         fontSize: 16,
-        fontWeight: '500',
+        // fontWeight: '500',
+        fontFamily:"Satoshi-Medium",
         marginLeft: 10,
     },
     cardText: {
         color: "#808080",
-        fontSize: 17,
+        fontSize: 16,
+        fontFamily:"Satoshi-Medium",
+        lineHeight:22,
         width: "90%"
     }
 });

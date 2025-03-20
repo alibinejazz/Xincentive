@@ -1,10 +1,11 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import BottomNav from './BottomNav';
-import bank from "../assets/bank.png";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png"; // Ensure this is correctly imported
+import React from 'react';
+import bank from "../assets/bank.png";
+import { useNavigation } from '@react-navigation/native';
 
 const ConnectBankScreen = () => {
   const navigation = useNavigation();
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     top: 20,
-    left: 20,
+    left: 0,
     padding: 10,
     flexDirection: "row",
     alignItems: "center",
@@ -76,8 +77,8 @@ const styles = StyleSheet.create({
     fontFamily:"Satoshi-Medium"
   },
   header: {
-    fontSize: 26,
-    textAlign: 'center',
+    fontSize: 24,
+    alignSelf: 'center',
     marginTop: 20,
     paddingBottom: 30,
     fontFamily:"Satoshi-Black"

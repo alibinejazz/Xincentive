@@ -58,7 +58,7 @@ const AppsLogin = () => {
 
                 {/* Paragraph */}
                 <Text style={styles.paragraph}>
-                    Register your account <Text style={{fontWeight:"bold",color:"black"}} onPress={() => navigation.navigate('Login')}>Sign Up</Text>
+                    Register your account <Text style={{fontWeight:"bold",color:"black",fontFamily: 'Satoshi-Medium'}} onPress={() => navigation.navigate('Login')}>Sign Up</Text>
                 </Text>
             </ScrollView>
         </View>
@@ -88,10 +88,11 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 24,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: '#232323',
         textAlign: 'center',
         marginBottom: 20,
+        fontFamily: 'Satoshi-Black',
     },
     button: {
         flexDirection: 'row',
@@ -111,8 +112,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     buttonText: {
-        fontSize: 16,
+        fontSize: 18,
         color: 'black',
+        fontFamily: 'Satoshi-Medium',
     },
     paragraph: {
         fontSize: 14,
@@ -120,6 +122,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 20,
         marginBottom: 40,
+        fontFamily: 'Satoshi-Regular',
     },
 });
 

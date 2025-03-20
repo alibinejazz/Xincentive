@@ -37,7 +37,7 @@ const BottomNav = () => {
   const tabs = [
     { name: 'Home', icon: home, screen: 'Market' },
     { name: 'Explore', icon: explore, screen: 'Explore' },
-    { name: 'Wallet', icon: wallet, activeIcon: activeWallet, screen: 'Wallet' },
+    { name: 'wallet', icon: wallet, activeIcon: activeWallet, screen: 'Wallet' },
     { name: 'Profile', icon: user, activeIcon: activeUser, screen: 'MyProfile' },
   ];
 
@@ -97,11 +97,13 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 30,
     flexDirection: 'row',
-    gap: 10,
+    gap: 2,
+    
   },
   activeText: {
     fontSize: 14,
     color: 'black',
     marginLeft: 8,
+    fontFamily:"Satoshi-Medium"
   },
 });

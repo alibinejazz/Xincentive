@@ -68,93 +68,100 @@ const Otp = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={styles.screenContainer}>
             {/* Back Button */}
             <TouchableOpacity style={styles.backButton} onPress={handleBack}>
                 <Icon name="chevron-left" size={24} color="black" />
                 <Text style={styles.backText}>Back</Text>
             </TouchableOpacity>
 
-            {/* Centered Icon */}
-            <View style={styles.iconContainer}>
-                <Image source={OtpIcon} style={styles.icon} />
-            </View>
+            {/* Main Content */}
+            <View style={styles.container}>
+                {/* Centered Icon */}
+                <View style={styles.iconContainer}>
+                    <Image source={OtpIcon} style={styles.icon} />
+                </View>
 
-            {/* Heading */}
-            <View style={styles.headingContainer}>
-                <Text style={styles.headingLine1}>We sent you a</Text>
-                <Text style={styles.headingLine2}>verification code</Text>
-            </View>
+                {/* Heading */}
+                <View style={styles.headingContainer}>
+                    <Text style={styles.headingLine1}>We sent you a</Text>
+                    <Text style={styles.headingLine2}>verification code</Text>
+                </View>
 
-            {/* Two Paragraphs */}
-            <Text style={styles.paragraph}>
-                Enter it to verify 00456778343
-            </Text>
-            <Text style={styles.paragraph}>
-                This will only be sent if your previous details were entered correctly.
-            </Text>
+                {/* Two Paragraphs */}
+                <Text style={styles.paragraph}>
+                    Enter it to verify 00456778343
+                </Text>
+                <Text style={styles.paragraph}>
+                    This will only be sent if your previous details were entered correctly.
+                </Text>
 
-            {/* Centered Paragraph */}
-            <Text style={styles.centeredParagraph}>Enter four-digit code</Text>
+                {/* Centered Paragraph */}
+                <Text style={styles.centeredParagraph}>Enter four-digit code</Text>
 
-            {/* OTP Input Boxes */}
-            <View style={styles.otpContainer}>
-                {otp.map((digit, index) => (
-                    <TextInput
-                        key={index}
+                {/* OTP Input Boxes */}
+                <View style={styles.otpContainer}>
+                    {otp.map((digit, index) => (
+                        <TextInput
+                            key={index}
+                            style={[
+                                styles.otpInput,
+                                (digit !== '' || isFocused) && styles.otpInputFocused, // Apply focused style
+                            ]}
+                            value={digit}
+                            onChangeText={(value) => handleOtpChange(index, value)}
+                            keyboardType="numeric"
+                            maxLength={1}
+                            ref={otpInputs[index]} // Assign ref to each TextInput
+                            onFocus={() => setIsFocused(true)}
+                            onBlur={() => setIsFocused(false)}
+                        />
+                    ))}
+                </View>
+
+                {/* Two Buttons */}
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity
                         style={[
-                            styles.otpInput,
-                            (digit !== '' || isFocused) && styles.otpInputFocused, // Apply focused style
+                            styles.button,
+                            !isOtpFilled && styles.buttonDisabled, // Disable button if OTP is not filled
                         ]}
-                        value={digit}
-                        onChangeText={(value) => handleOtpChange(index, value)}
-                        keyboardType="numeric"
-                        maxLength={1}
-                        ref={otpInputs[index]} // Assign ref to each TextInput
-                        onFocus={() => setIsFocused(true)}
-                        onBlur={() => setIsFocused(false)}
-                    />
-                ))}
-            </View>
-
-            {/* Two Buttons */}
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                    style={[
-                        styles.button,
-                        !isOtpFilled && styles.buttonDisabled, // Disable button if OTP is not filled
-                    ]}
-                    disabled={!isOtpFilled}
-                >
-                    <Text style={styles.buttonText}>
-                        {isOtpFilled ? 'Verify' : 'Continue'}
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.buttonResend}
-                    onPress={handleResend}
-                    disabled={isTimerActive}
-                >
-                    <Text style={styles.buttonTextResend}>
-                        {isTimerActive ? (
-                            <>
-                                Resend code in <Text style={styles.timerText}>00:{timer < 10 ? `0${timer}` : timer}</Text>
-                            </>
-                        ) : (
-                            'Resend'
-                        )}
-                    </Text>
-                </TouchableOpacity>
+                        disabled={!isOtpFilled}
+                        onPress={() => navigation.navigate('InviteCode')}
+                    >
+                        <Text style={styles.buttonText}>
+                            {isOtpFilled ? 'Verify' : 'Continue'}
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.buttonResend}
+                        onPress={handleResend}
+                        disabled={isTimerActive}
+                    >
+                        <Text style={styles.buttonTextResend}>
+                            {isTimerActive ? (
+                                <>
+                                    Resend code in <Text style={styles.timerText}>00:{timer < 10 ? `0${timer}` : timer}</Text>
+                                </>
+                            ) : (
+                                'Resend'
+                            )}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    screenContainer: {
+        flex: 1,
+        backgroundColor: '#f7f7f5', // Background color for the entire screen
+    },
     container: {
         flex: 1,
-        backgroundColor: '#f7f7f5',
-        paddingHorizontal: 20,
+        paddingHorizontal: 20, // Consistent horizontal padding
     },
     backButton: {
         marginTop: 15,
@@ -162,11 +169,13 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
+        backgroundColor: '#f7f7f5', // Ensure back button has the same background color
     },
     backText: {
-        fontSize: 16,
+        fontSize: 14,
         color: 'black',
         marginLeft: 5,
+        fontFamily: 'Satoshi-Medium',
     },
     iconContainer: {
         alignSelf: 'center',
@@ -186,25 +195,29 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     headingLine1: {
-        fontSize: 34,
-        fontWeight: 'bold',
+        fontSize: 28,
+        // fontWeight: 'bold',
         color: '#232323',
+        fontFamily: 'Satoshi-Black',
     },
     headingLine2: {
-        fontSize: 34,
-        fontWeight: 'bold',
+        fontSize: 28,
+        // fontWeight: 'bold',
         color: '#232323',
+        fontFamily: 'Satoshi-Black',
     },
     paragraph: {
-        fontSize: 20,
+        fontSize: 16,
         color: '#9E9C9A',
         marginBottom: 10,
+        fontFamily: 'Satoshi-Regular',
     },
     centeredParagraph: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 16,
         color: '#9E9C9A',
-        marginVertical: 20,
+        marginVertical: 10,
+        fontFamily: 'Satoshi-Regular',
     },
     otpContainer: {
         flexDirection: 'row',
@@ -220,6 +233,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 24,
         color: '#232323',
+        fontFamily: 'Satoshi-Bold',
     },
     otpInputFocused: {
         borderColor: '#40838B', // Change border color when focused or filled
@@ -236,14 +250,16 @@ const styles = StyleSheet.create({
         minWidth: 120,
         alignItems: 'center',
         marginBottom: 20,
+
     },
     buttonDisabled: {
-        backgroundColor: '#B8BBBA', // Disabled button color
+        backgroundColor: '#6fe17c', // Disabled button color
     },
     buttonText: {
-        color: '#FFFFFF',
-        fontSize: 20,
-        fontWeight: 'bold',
+        color: 'black',
+        fontSize: 16,
+        // fontWeight: 600,
+        fontFamily: 'Satoshi-Medium',
     },
     buttonResend: {
         backgroundColor: '#f7f7f5',
@@ -251,11 +267,13 @@ const styles = StyleSheet.create({
     },
     buttonTextResend: {
         color: '#9b9b9b',
-        fontSize: 20,
+        fontSize: 16,
+        fontFamily: 'Satoshi-Medium',
     },
     timerText: {
         fontWeight: 'bold',
-        color:"black" // Make the timer text bold
+        color: 'black',
+        fontFamily: 'Satoshi-Bold',
     },
 });
 
