@@ -31,13 +31,13 @@ const BottomNav = () => {
   }, []);
 
   // Define related screens that should keep Wallet or Profile tabs active
-  const walletScreens = ['ConnectBankScreen', 'AddNewCard', 'Conversion'];
+  const walletScreens = ['ConnectBankScreen', 'AddNewCard', 'Conversion', "Wallet"];
   const profileScreens = ['MyProfile', 'EditProfile', "Subscription", "Terms"];
 
   const tabs = [
     { name: 'Home', icon: home, screen: 'Market' },
     { name: 'Explore', icon: explore, screen: 'Explore' },
-    { name: 'wallet', icon: wallet, activeIcon: activeWallet, screen: 'Wallet' },
+    { name: 'Wallet', icon: wallet, activeIcon: activeWallet, screen: 'Wallet' },
     { name: 'Profile', icon: user, activeIcon: activeUser, screen: 'MyProfile' },
   ];
 

@@ -25,6 +25,10 @@ const SubscriptionCancelledModal = ({ visible, onClose }) => {
                     <TouchableOpacity style={styles.doneButton} onPress={onClose}>
                         <Text style={styles.doneButtonText}>Done</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.cancelButton} onPress={onClose}>
+                        <Text style={styles.cancelButtonText}>Cancel</Text>
+                        
+                    </TouchableOpacity>
                 </View>
             </View>
         </Modal>
@@ -86,4 +90,20 @@ const styles = StyleSheet.create({
         color: 'black',
         fontFamily:"Satoshi-Medium"//
     },
+    cancelButton:{
+        width: '85%',
+        paddingVertical: 15,
+        borderRadius: 30,
+        // backgroundColor: '#6ee17c',
+        alignItems: 'center',
+        marginTop:20,
+        borderColor:"#9e9e9e",
+        borderWidth: 1,
+    },
+    cancelButtonText:{
+        fontSize: 16,
+        // fontWeight: '500',
+        color: '#9e9e9e',
+        fontFamily:"Satoshi-Medium"//
+    }
 });

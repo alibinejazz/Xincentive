@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
         width: "48%",
         borderWidth: 1,  
         borderColor: '#EFEFEF',
+        height:170,
     },
     selectedCard: {
         borderColor: "rgb(110, 225, 124)",
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     cardTitle: {
-        fontSize: 18,
+        fontSize: 14,
         fontFamily:"Satoshi-Bold"
     },
     confirmButton: {

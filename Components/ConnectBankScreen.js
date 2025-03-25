@@ -33,7 +33,7 @@ const ConnectBankScreen = () => {
         <View style={styles.textContainer}>
           <View style={styles.cardHeader}>
             <Text style={styles.cardTitle}>Connect your bank account</Text>
-            <Text>
+            <Text style={styles.nextIcon} >
               <Icon name="chevron-right" size={24} color="black" />
             </Text>
           </View>
@@ -69,25 +69,33 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: "row",
     alignItems: "center",
+
   },
   backText: {
     fontSize: 16,
     color: "black",
     marginLeft: 5,
-    fontFamily:"Satoshi-Medium"
+    fontFamily: "Satoshi-Medium"
   },
   header: {
     fontSize: 24,
     alignSelf: 'center',
+    width: '80%',
+    // paddingHorizontal: 20,
     marginTop: 20,
     paddingBottom: 30,
-    fontFamily:"Satoshi-Black"
+    // backgroundColor:'pink',
+    fontFamily: "Satoshi-Black"
+
   },
   card: {
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',
     padding: 35,
+    paddingTop: 22,
+    paddingBottom: 8,
+    paddingLeft: 20,
     borderRadius: 22,
     shadowColor: 'rgba(0, 0, 0, 0.20)',
     shadowOffset: { width: 0, height: 10 },
@@ -97,15 +105,25 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: -20,
     overflow: 'hidden',
+    // backgroundColor: 'blue'
+
   },
   iconContainer: {
-    padding: 10,
+    paddingRight: 4,
     borderRadius: 10,
+    height: 100,
     marginRight: 5,
-    marginTop: -70
+    // marginTop: -70
+
   },
   textContainer: {
     flex: 1,
+    height: 100,
+    // backgroundColor:'pink',
+    paddingLeft: 5
+  },
+  nextIcon: {
+    left:20,
   },
   cardHeader: {
     flexDirection: "row",
@@ -115,11 +133,12 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 17,
     fontWeight: '500',
-    fontFamily:"Satoshi-Bold"
+    fontFamily: "Satoshi-Bold"
   },
   cardSubtitle: {
     fontSize: 16,
     marginTop: 10,
-    fontFamily:"Satoshi-Medium"
+    width: 250,
+    fontFamily: "Satoshi-Medium"
   },
 });

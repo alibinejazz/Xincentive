@@ -97,17 +97,22 @@ const styles = StyleSheet.create({
     fontFamily:"Satoshi-Medium"
   },
   header: {
-    fontSize: 26,
-    textAlign: 'center',
+    fontSize: 24,
+    alignSelf: 'center',
+    width: '80%',
+    // paddingHorizontal: 20,
     marginTop: 20,
     paddingBottom: 30,
-    fontFamily:"Satoshi-Black"
+    // backgroundColor:'pink',
+    fontFamily: "Satoshi-Black"
+
   },
   card: {
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
+    paddingLeft:5,
     borderRadius: 22,
     shadowColor: 'rgba(0, 0, 0, 0.20)',
     shadowOffset: { width: 0, height: 10 },
@@ -123,6 +128,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
+    paddingLeft:5,
     borderRadius: 25,
     shadowColor: 'rgba(0, 0, 0, 0.20)',
     shadowOffset: { width: 0, height: 10 },

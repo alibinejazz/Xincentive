@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     continueButtonActive: {
-        backgroundColor: '#4CAF50', // Green color when active
+        backgroundColor: '#', // Green color when active
     },
     continueButtonText: {
         color: '#B8BBBA',

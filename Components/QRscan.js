@@ -9,7 +9,9 @@ const QRScan = () => {
     <View style={styles.container}>
       {/* Info Text with Icon */}
       <View style={styles.infoContainer}>
-        <Image source={info} style={styles.infoIcon}/>
+        <View style={styles.iconContainer}>
+          <Image source={info} style={styles.infoIcon} />
+        </View>
         <Text style={styles.infoText}>
           Open your business connector app and scan the QR code provided by the cashier or merchant.
         </Text>
@@ -34,18 +36,23 @@ export default QRScan;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingTop:20,
+    paddingTop: 20,
     paddingHorizontal: 20,
-    backgroundColor:"#f5f5f5"
+    backgroundColor: "#f5f5f5"
   },
   infoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 15,
+    marginHorizontal: 5,
+    // backgroundColor: 'yellow',
   },
   infoIcon: {
-    marginRight: 5,
-    marginBottom: 40,
+    // backgroundColor: 'pink',
+  },
+  iconContainer: {
+    height: 70,
+    paddingTop: 4,
   },
   infoText: {
     fontSize: 16,
@@ -54,7 +61,9 @@ const styles = StyleSheet.create({
     textAlign: "left",
     width: "100%",
     padding: 2,
-    fontFamily:"Satoshi-Medium"
+    fontFamily: "Satoshi-Medium",
+    paddingHorizontal: 17,
+    // backgroundColor: 'orange'
   },
   qrContainer: {
     backgroundColor: 'white',
@@ -74,13 +83,13 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignSelf: 'center',
     marginTop: 20,
-    width:"100%"
+    width: "100%"
   },
   connectorButtonText: {
     color: 'black',
     fontSize: 18,
     textAlign: 'center',
-    fontFamily:"Satoshi-Medium"
+    fontFamily: "Satoshi-Medium"
   },
 });
 

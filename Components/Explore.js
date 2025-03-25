@@ -80,7 +80,7 @@ const Explore = () => {
                 {/* Search Bar */}
                 <View style={styles.searchBarContainer}>
                     <View style={styles.searchBar}>
-                        <Icon name="search" size={20} color="#cecdd2" style={styles.searchIcon} />
+                        <Icon name="search" size={35} color="#cecdd2" style={styles.searchIcon} />
                         <TextInput
                             style={styles.searchInput}
                             placeholder="Search"
@@ -148,12 +148,12 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         paddingTop: 40,
-        paddingBottom: 0,
+        paddingBottom: 10,
         paddingHorizontal: 20,
         alignItems: 'center',
         resizeMode: 'cover',
-        borderBottomWidth: 0.8,
-        borderColor: "#cbc9cc",
+        // borderBottomWidth: 0.8,
+        // borderColor: "#cbc9cc",
         position: 'relative', // Needed for absolute positioning of diamond
     },
     headerRow: {
@@ -250,13 +250,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderWidth: 1,
         borderColor: "#e8e8e8",
-        borderRadius: 25,
+        borderRadius: 30,
         paddingHorizontal: 10,
         paddingVertical: 10,
         width: '100%', // Ensure the search bar takes full width
     },
     searchIcon: {
-        marginRight: 10,
+        marginRight: 3,
     },
     searchInput: {
         flex: 1,

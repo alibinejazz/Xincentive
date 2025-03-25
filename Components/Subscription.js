@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     profileText: {
         fontSize: 14.11,
         color: 'black',
-        fontFamily:"Satoshi-Medium"//
+        fontFamily:"Satoshi-Regular"//
     },
     activeText: {
         color: '#6bde79',
