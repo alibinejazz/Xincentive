@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 
 import BottomNav from './BottomNav';
+import Buy from '../Images/Buy';
+import Convert from '../Images/Convert';
+import Deposit from '../Images/Deposit';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -66,9 +69,9 @@ const Wallet = () => {
   const navigation = useNavigation();
   // Action buttons data
   const actionButtons = [
-    { id: '1', icon: 'refresh', label: 'Convert' },
-    { id: '2', icon: 'arrow-downward', label: 'Deposit' },
-    { id: '3', icon: 'shopping-bag', label: 'Buy' },
+    { id: '1', icon: Convert, label: 'Convert' },
+    { id: '2', icon: Deposit, label: 'Deposit' },
+    { id: '3', icon: Buy, label: 'Buy' },
   ];
 
   const renderTransaction = (item) => (
@@ -119,14 +122,17 @@ const Wallet = () => {
 
         {/* Action Buttons */}
         <View style={styles.actionButtonsContainer}>
-          {actionButtons.map((button) => (
+        {actionButtons.map((button) => {
+          const IconComponent = button.icon;
+          return (
             <TouchableOpacity key={button.id} style={styles.actionButton}>
               <View style={styles.iconCircle}>
-                <Icon name={button.icon} size={24} color="#000" />
+                <IconComponent width={24} height={24} fill="#000" />
               </View>
               <Text style={styles.actionButtonLabel}>{button.label}</Text>
             </TouchableOpacity>
-          ))}
+          );
+        })}
         </View>
       </ImageBackground>
 
@@ -234,14 +240,14 @@ const styles = StyleSheet.create({
     width: '30%',
   },
   iconCircle: {
-    width: 60,
-    height: 60,
+    // width: 60,
+    // height: 60,
     borderRadius: 20,
     backgroundColor: '#FFF',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: '#E8E8E8',
   },
   actionButtonLabel: {

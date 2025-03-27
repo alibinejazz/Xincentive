@@ -8,7 +8,7 @@ import activeUser from "../assets/activeUser.png";
 import activeWallet from "../assets/activeWallet.png";
 import explore from "../assets/explore.png";
 import home from "../assets/home.png";
-import user from "../assets/user.png";
+// import user from "../assets/user11.png";
 import wallet from "../assets/wallet.png";
 
 const BottomNav = () => {
@@ -31,14 +31,14 @@ const BottomNav = () => {
   }, []);
 
   // Define related screens that should keep Wallet or Profile tabs active
-  const walletScreens = ['ConnectBankScreen', 'AddNewCard', 'Conversion'];
+  const walletScreens = ['ConnectBankScreen', 'AddNewCard', 'Conversion', "Wallet"];
   const profileScreens = ['MyProfile', 'EditProfile', "Subscription", "Terms"];
 
   const tabs = [
     { name: 'Home', icon: home, screen: 'Market' },
     { name: 'Explore', icon: explore, screen: 'Explore' },
-    { name: 'wallet', icon: wallet, activeIcon: activeWallet, screen: 'Wallet' },
-    { name: 'Profile', icon: user, activeIcon: activeUser, screen: 'MyProfile' },
+    { name: 'Wallet', icon: wallet, activeIcon: activeWallet, screen: 'Wallet' },
+    { name: 'Profile', icon: activeUser, screen: 'MyProfile' },
   ];
 
   if (keyboardVisible) return null; // Hide navbar when keyboard is open

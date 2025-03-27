@@ -19,12 +19,6 @@ const InviteCode = () => {
         navigation.goBack();
     };
 
-    // Handle skip button press
-    const handleSkip = () => {
-        // Add logic for skip action
-        console.log('Skip button pressed');
-    };
-
     // Handle continue button press
     const handleContinue = () => {
         // Add logic for continue action
@@ -36,21 +30,15 @@ const InviteCode = () => {
         <View style={styles.screenContainer}>
         <View style={styles.header}>
                 <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-                    <Icon name="chevron-left" size={24} color="black" />
+                    <Icon name="chevron-left" size={24} color="#232322" />
                     <Text style={styles.backText}>Back</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
-                    <Text style={styles.skipText}>Skip</Text>
                 </TouchableOpacity>
             </View>
         
         <View style={styles.container}>
-            {/* Header with Back and Skip Buttons */}
-            
-
             {/* Heading */}
             <View style={styles.headingContainer}>
-                <Text style={styles.headingLine1}>What’s your</Text>
+                <Text style={styles.headingLine1}>What's your</Text>
                 <Text style={styles.headingLine2}>Do you have an invite</Text>
                 <Text style={styles.headingLine3}>code?</Text>
             </View>
@@ -67,8 +55,11 @@ const InviteCode = () => {
                     inputValue !== '' && styles.inputFilled, // Apply filled style
                 ]}
                 placeholder="ABC123"
+                placeholderTextColor="#9E9C9A"
                 value={inputValue}
                 onChangeText={setInputValue}
+                selectionColor="#232323" // Cursor color
+                cursorColor="#232323" // Cursor color
             />
 
             {/* Continue Button */}
@@ -106,7 +97,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         marginTop: 15,
         marginBottom: 20,
@@ -118,16 +109,8 @@ const styles = StyleSheet.create({
     },
     backText: {
         fontSize: 14,
-        color: 'black',
+        color: '#232322',
         marginLeft: 5,
-        fontFamily: 'Satoshi-Medium',
-    },
-    skipButton: {
-        padding: 10,
-    },
-    skipText: {
-        fontSize: 14,
-        color: '#9e9e9e',
         fontFamily: 'Satoshi-Medium',
     },
     headingContainer: {
@@ -135,17 +118,17 @@ const styles = StyleSheet.create({
     },
     headingLine1: {
         fontSize: 28,
-        color: '#232323',
+        color: '#232322',
         fontFamily: 'Satoshi-Black',
     },
     headingLine2: {
         fontSize: 28,
         fontFamily: 'Satoshi-Black',
-        color: '#232323',
+        color: '#232322',
     },
     headingLine3: {
         fontSize: 28,
-        color: '#232323',
+        color: '#232322',
         fontFamily: 'Satoshi-Black',
     },
     paragraph: {
@@ -161,12 +144,12 @@ const styles = StyleSheet.create({
         padding: 15,
         fontSize: 24,
         height:90,
-        color: 'black',
+        color: '#232322',
         marginBottom: 20,
         fontFamily: 'Satoshi-Medium',
     },
     inputFilled: {
-        borderColor: '#40838B', // Change border color when input is filled
+        borderColor: '#232322', // Change border color when input is filled
     },
     continueButton: {
         backgroundColor: '#f2f2f2',
@@ -184,7 +167,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Satoshi-Medium',
     },
     continueButtonTextFilled: {
-        color: 'black',
+        color: '#232322',
     },
     skipButtonText: {
         alignSelf: 'center',

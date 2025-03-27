@@ -10,6 +10,11 @@ import {
 } from 'react-native';
 import React, { useRef, useState } from 'react';
 
+import Image3 from '../Images/Image3';
+import Image4 from '../Images/Image4';
+import Image5 from '../Images/Image5';
+import Image6 from '../Images/Image6';
+
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 const onboardingData = [
@@ -27,37 +32,25 @@ const onboardingData = [
   },
   {
     heading: 'Connect your bank account',
-    image: require('../assets/image3.png'),
+    image: Image3, // Now using SVG component
     buttonText: 'Get Started',
-    backgroundColor: '#E79420', // Background color for slide 1
+    backgroundColor: '#E79420',
   },
   {
     heading: 'Spend money earn cash back',
-    image: require('../assets/image4.png'),
+    image: Image4,
     buttonText: 'Get Started',
     backgroundColor: '#F88121', // Background color for slide 2
   },
   {
     heading: 'Convert cash back into tokens',
-    image: require('../assets/image5.png'),
+    image: Image5,
     buttonText: 'Get Started',
     backgroundColor: '#E95237', // Background color for slide 3
   },
   {
     heading: 'Get Cash back on every purchases',
-    image: require('../assets/image6.png'),
-    buttonText: 'Get Started',
-    backgroundColor: '#FF9331', // Background color for slide 4
-  },
-  {
-    heading: 'Convert cash back into tokens',
-    image: require('../assets/image5.png'),
-    buttonText: 'Get Started',
-    backgroundColor: '#E95237', // Background color for slide 3
-  },
-  {
-    heading: 'Get Cash back on every purchases',
-    image: require('../assets/image6.png'),
+    image: Image6,
     buttonText: 'Get Started',
     backgroundColor: '#FF9331', // Background color for slide 4
   },
@@ -118,7 +111,7 @@ const OnboardingCarousel = ({ navigation }) => {
           </View>
           <View style={styles.logoContainer}>
             <Image
-              source={require('../assets/Logo.png')} // Replace with your logo path
+              source={require('../assets/LogoInitial.png')} // Replace with your logo path
               style={styles.logo}
               resizeMode="contain"
             />
@@ -147,14 +140,24 @@ const OnboardingCarousel = ({ navigation }) => {
                 <Text style={styles.heading}>{item.heading}</Text>
               </View>
               {/* Image */}
-              <Image
-                source={item.image}
-                style={[
+              {/* Image */}
+              {item.image && typeof item.image === 'number' ? (
+                <Image
+                  source={item.image}
+                  style={[
+                    styles.image,
+                    (index === 0 || index === 1) && styles.fullWidthImage,
+                  ]}
+                  resizeMode="contain"
+                />
+              ) : (
+                <View style={[
                   styles.image,
-                  (index === 0 || index === 1) && styles.fullWidthImage, // Apply full width for first and second slides
-                ]}
-                resizeMode="contain"
-              />
+                  (index === 0 || index === 1) && styles.fullWidthImage,
+                ]}>
+                  <item.image width="100%" height="100%" />
+                </View>
+              )}
             </View>
           ))}
         </ScrollView>
@@ -162,10 +165,20 @@ const OnboardingCarousel = ({ navigation }) => {
         {/* Button */}
         <View style={styles.buttonContainer}>
           {/* Get Started Button */}
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.buttonText}>Get Started</Text>
+          <TouchableOpacity 
+            style={[
+              styles.button,
+              currentIndex === 0 && styles.firstScreenButton // Apply only to first screen
+            ]} 
+            onPress={() => navigation.navigate('Login')}
+          >
+            <Text style={[
+              styles.buttonText,
+              currentIndex === 0 && styles.firstScreenButtonText // Apply only to first screen
+            ]}>
+              Get Started
+            </Text>
           </TouchableOpacity>
-
           {/* Render "Have an account? Sign in" on all slides except the last one */}
           {currentIndex !== onboardingData.length - 1 && (
             <TouchableOpacity onPress={() => navigation.navigate('AppsLogin')}>
@@ -265,13 +278,15 @@ const styles = StyleSheet.create({
     height: 300,
     marginVertical: 30,
     borderRadius: 12,
-    marginTop:30,
+    marginTop: 30,
+    justifyContent: 'center', // For SVG
+    alignItems: 'center',    // For SVG
   },
   fullWidthImage: {
-    width: screenWidth, // Full width for first and second slides
-    height: 300, // Adjust height as needed
-    marginVertical: 0, // Remove vertical margin
-    marginHorizontal: -20, // Negate padding to allow overflow
+    width: screenWidth,
+    height: 300,
+    marginVertical: 0,
+    marginHorizontal: -20,
   },
   buttonContainer: {
     alignItems: 'center',
@@ -313,6 +328,16 @@ const styles = StyleSheet.create({
     color: '#ffffff', // Change to your desired highlight color
     fontFamily:"Satoshi-Bold"
   },
+  
+  // New styles for first screen button
+  firstScreenButton: {
+    backgroundColor: '#E8E8E8', // Light gray background
+  },
+  firstScreenButtonText: {
+    color: '#232323', // Dark text
+    opacity: 0.6, // 60% opacity
+  },
+
 });
 
 export default OnboardingCarousel;

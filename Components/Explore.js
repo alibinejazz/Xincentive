@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import BottomNav from './BottomNav';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png"; // Background Image
+import SearchIcon from "../assets/search-normal.png"
 import blacktri from "../assets/blacktri.png";
 import filter from "../assets/filter.png";
 import { useNavigation } from '@react-navigation/native';
@@ -80,7 +81,11 @@ const Explore = () => {
                 {/* Search Bar */}
                 <View style={styles.searchBarContainer}>
                     <View style={styles.searchBar}>
-                        <Icon name="search" size={20} color="#cecdd2" style={styles.searchIcon} />
+                    <Image
+                    source={SearchIcon}
+                    style={styles.searchIcon}
+                    resizeMode="contain" // Ensure the icon fits within the container
+                />
                         <TextInput
                             style={styles.searchInput}
                             placeholder="Search"
@@ -152,8 +157,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         alignItems: 'center',
         resizeMode: 'cover',
-        borderBottomWidth: 0.8,
-        borderColor: "#cbc9cc",
+        // borderBottomWidth: 0.8,
+        // borderColor: "#cbc9cc",
         position: 'relative', // Needed for absolute positioning of diamond
     },
     headerRow: {
@@ -250,7 +255,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderWidth: 1,
         borderColor: "#e8e8e8",
-        borderRadius: 25,
+        borderRadius: 140,
         paddingHorizontal: 10,
         paddingVertical: 10,
         width: '100%', // Ensure the search bar takes full width

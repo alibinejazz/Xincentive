@@ -9,17 +9,17 @@ import {
 import React, { useEffect, useRef, useState } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import OtpIcon from '../assets/OtpIcon.png'; // Replace with your OTP icon
+import OtpIcon from '../assets/OtpIcon.png';
 import { useNavigation } from '@react-navigation/native';
 
 const Otp = () => {
     const navigation = useNavigation();
-    const [otp, setOtp] = useState(['', '', '', '']); // State for OTP digits
-    const [isFocused, setIsFocused] = useState(false); // Track focus state for OTP inputs
-    const [timer, setTimer] = useState(58); // Countdown timer for resend
-    const [isTimerActive, setIsTimerActive] = useState(true); // Track if the timer is active
+    const [otp, setOtp] = useState(['', '', '', '']);
+    const [isFocused, setIsFocused] = useState(false);
+    const [timer, setTimer] = useState(58);
+    const [isTimerActive, setIsTimerActive] = useState(true);
+    const [activeInputIndex, setActiveInputIndex] = useState(null);
 
-    // Create refs for OTP input boxes
     const otpInputs = [
         useRef(null),
         useRef(null),
@@ -27,27 +27,22 @@ const Otp = () => {
         useRef(null),
     ];
 
-    // Handle back button press
     const handleBack = () => {
         navigation.goBack();
     };
 
-    // Handle OTP input change
     const handleOtpChange = (index, value) => {
         const newOtp = [...otp];
         newOtp[index] = value;
         setOtp(newOtp);
 
-        // Auto-focus to the next input
         if (value && index < 3) {
-            otpInputs[index + 1].current.focus(); // Use .current to access the ref
+            otpInputs[index + 1].current.focus();
         }
     };
 
-    // Check if all OTP boxes are filled
     const isOtpFilled = otp.every((digit) => digit !== '');
 
-    // Countdown timer for resend
     useEffect(() => {
         let interval;
         if (isTimerActive && timer > 0) {
@@ -60,35 +55,28 @@ const Otp = () => {
         return () => clearInterval(interval);
     }, [timer, isTimerActive]);
 
-    // Handle resend button press
     const handleResend = () => {
-        setTimer(58); // Reset timer
-        setIsTimerActive(true); // Restart timer
-        // Add logic to resend OTP here
+        setTimer(58);
+        setIsTimerActive(true);
     };
 
     return (
         <View style={styles.screenContainer}>
-            {/* Back Button */}
             <TouchableOpacity style={styles.backButton} onPress={handleBack}>
                 <Icon name="chevron-left" size={24} color="black" />
                 <Text style={styles.backText}>Back</Text>
             </TouchableOpacity>
 
-            {/* Main Content */}
             <View style={styles.container}>
-                {/* Centered Icon */}
                 <View style={styles.iconContainer}>
                     <Image source={OtpIcon} style={styles.icon} />
                 </View>
 
-                {/* Heading */}
                 <View style={styles.headingContainer}>
                     <Text style={styles.headingLine1}>We sent you a</Text>
                     <Text style={styles.headingLine2}>verification code</Text>
                 </View>
 
-                {/* Two Paragraphs */}
                 <Text style={styles.paragraph}>
                     Enter it to verify 00456778343
                 </Text>
@@ -96,40 +84,48 @@ const Otp = () => {
                     This will only be sent if your previous details were entered correctly.
                 </Text>
 
-                {/* Centered Paragraph */}
                 <Text style={styles.centeredParagraph}>Enter four-digit code</Text>
 
-                {/* OTP Input Boxes */}
                 <View style={styles.otpContainer}>
                     {otp.map((digit, index) => (
                         <TextInput
                             key={index}
                             style={[
                                 styles.otpInput,
-                                (digit !== '' || isFocused) && styles.otpInputFocused, // Apply focused style
+                                (digit !== '' || activeInputIndex === index) && styles.otpInputFilled,
+                                activeInputIndex === index && styles.otpInputActive
                             ]}
                             value={digit}
                             onChangeText={(value) => handleOtpChange(index, value)}
                             keyboardType="numeric"
                             maxLength={1}
-                            ref={otpInputs[index]} // Assign ref to each TextInput
-                            onFocus={() => setIsFocused(true)}
-                            onBlur={() => setIsFocused(false)}
+                            ref={otpInputs[index]}
+                            onFocus={() => {
+                                setIsFocused(true);
+                                setActiveInputIndex(index);
+                            }}
+                            onBlur={() => {
+                                setIsFocused(false);
+                                setActiveInputIndex(null);
+                            }}
+                            selectionColor="#232323" // Cursor color
                         />
                     ))}
                 </View>
 
-                {/* Two Buttons */}
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         style={[
                             styles.button,
-                            !isOtpFilled && styles.buttonDisabled, // Disable button if OTP is not filled
+                            isOtpFilled ? styles.buttonActive : styles.buttonInactive
                         ]}
                         disabled={!isOtpFilled}
                         onPress={() => navigation.navigate('InviteCode')}
                     >
-                        <Text style={styles.buttonText}>
+                        <Text style={[
+                            styles.buttonText,
+                            isOtpFilled ? styles.buttonTextActive : styles.buttonTextInactive
+                        ]}>
                             {isOtpFilled ? 'Verify' : 'Continue'}
                         </Text>
                     </TouchableOpacity>
@@ -157,11 +153,11 @@ const Otp = () => {
 const styles = StyleSheet.create({
     screenContainer: {
         flex: 1,
-        backgroundColor: '#f7f7f5', // Background color for the entire screen
+        backgroundColor: '#f7f7f5',
     },
     container: {
         flex: 1,
-        paddingHorizontal: 20, // Consistent horizontal padding
+        paddingHorizontal: 20,
     },
     backButton: {
         marginTop: 15,
@@ -169,7 +165,7 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#f7f7f5', // Ensure back button has the same background color
+        backgroundColor: '#f7f7f5',
     },
     backText: {
         fontSize: 14,
@@ -196,13 +192,11 @@ const styles = StyleSheet.create({
     },
     headingLine1: {
         fontSize: 28,
-        // fontWeight: 'bold',
         color: '#232323',
         fontFamily: 'Satoshi-Black',
     },
     headingLine2: {
         fontSize: 28,
-        // fontWeight: 'bold',
         color: '#232323',
         fontFamily: 'Satoshi-Black',
     },
@@ -228,38 +222,47 @@ const styles = StyleSheet.create({
         width: 77,
         height: 77,
         borderWidth: 2,
-        borderColor: '#F2F2F2',
+        borderColor: '#D8DAD8', // Changed stroke color
         borderRadius: 10,
         textAlign: 'center',
         fontSize: 24,
         color: '#232323',
         fontFamily: 'Satoshi-Bold',
+        backgroundColor: '#FFFFFF',
     },
-    otpInputFocused: {
-        borderColor: '#40838B', // Change border color when focused or filled
+    otpInputFilled: {
+        borderColor: '#D8DAD8', // Stroke color when filled
+    },
+    otpInputActive: {
+        borderColor: '#232323', // Active input color
     },
     buttonContainer: {
         justifyContent: 'center',
         marginTop: 20,
     },
     button: {
-        backgroundColor: '#6fe17c',
         padding: 15,
         borderRadius: 50,
         marginHorizontal: 10,
         minWidth: 120,
         alignItems: 'center',
         marginBottom: 20,
-
     },
-    buttonDisabled: {
-        backgroundColor: '#6fe17c', // Disabled button color
+    buttonInactive: {
+        backgroundColor: '#F2F2F2', // Button color before action
+    },
+    buttonActive: {
+        backgroundColor: '#6FE17C', // Button color after action
     },
     buttonText: {
-        color: 'black',
         fontSize: 16,
-        // fontWeight: 600,
         fontFamily: 'Satoshi-Medium',
+    },
+    buttonTextInactive: {
+        color: '#B9B9B9', // Button label color before action
+    },
+    buttonTextActive: {
+        color: '#232323', // Button label color after action
     },
     buttonResend: {
         backgroundColor: '#f7f7f5',

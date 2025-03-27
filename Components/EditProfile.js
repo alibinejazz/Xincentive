@@ -8,7 +8,8 @@ import edit from "../assets/edit.png";
 import emails from "../assets/email.png";
 import phone from "../assets/phone.png";
 import { useNavigation } from '@react-navigation/native';
-import user from "../assets/User.png";
+
+// import user from "../assets/User.png";
 
 const EditProfile = () => {
     const navigation = useNavigation();
@@ -56,12 +57,13 @@ const EditProfile = () => {
                     {/* Full Name Input */}
                     <View style={styles.inputWrapper}>
                         <View style={styles.labelContainer}>
-                            <Image source={user} style={styles.inputIcon} />
+                            <Image source={require("../assets/User.png")} style={styles.inputIcon} />
                             <Text style={styles.label}>Full Name</Text>
                         </View>
                         <TextInput
                             style={styles.input}
                             value={fullName}
+                            selectionColor='#232323'
                             onChangeText={(value) => handleInputChange(setFullName, value)}
                         />
                     </View>
@@ -75,6 +77,7 @@ const EditProfile = () => {
                         <TextInput
                             style={styles.input}
                             value={email}
+                            selectionColor='#232323'
                             onChangeText={(value) => handleInputChange(setEmail, value)}
                             keyboardType="email-address"
                         />
@@ -89,6 +92,7 @@ const EditProfile = () => {
                         <TextInput
                             style={styles.input}
                             value={phoneNumber}
+                            selectionColor='#232323'
                             onChangeText={(value) => handleInputChange(setPhoneNumber, value)}
                             keyboardType="phone-pad"
                         />
@@ -161,7 +165,7 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     editButton: {
-        
+
         marginBottom: 30,
     },
     header: {
@@ -170,8 +174,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingBottom: 30,
         flex: 1,
-        color: '#000000', 
-        fontFamily:"Satoshi-Black"//// Ensure text is visible on background
+        color: '#000000',
+        fontFamily: "Satoshi-Black"//// Ensure text is visible on background
     },
     updateProfileCard: {
         backgroundColor: 'white',
@@ -210,12 +214,12 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#888',
         // fontWeight: '500',
-        fontFamily:"Satoshi-Medium"//
+        fontFamily: "Satoshi-Medium"//
     },
     input: {
         fontSize: 24,
         color: '#000',
-        fontFamily:"Satoshi-Medium"//
+        fontFamily: "Satoshi-Medium"//
     },
     saveButton: {
         paddingVertical: 18,
@@ -229,7 +233,7 @@ const styles = StyleSheet.create({
     saveButtonText: {
         color: 'black',
         fontSize: 16,
-        fontFamily:"Satoshi-Medium",
+        fontFamily: "Satoshi-Medium",
         textAlign: 'center',
     },
     modalContainer: {
@@ -253,14 +257,14 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 16,
         // fontWeight: '500',
-        fontFamily:"Satoshi-Medium",
+        fontFamily: "Satoshi-Medium",
         marginLeft: 10,
     },
     cardText: {
         color: "#808080",
         fontSize: 16,
-        fontFamily:"Satoshi-Medium",
-        lineHeight:22,
+        fontFamily: "Satoshi-Medium",
+        lineHeight: 22,
         width: "90%"
     }
 });

@@ -21,12 +21,6 @@ const EnableNotifications = () => {
         navigation.goBack();
     };
 
-    // Handle skip button press
-    const handleSkip = () => {
-        // Add logic for skip action
-        console.log('Skip button pressed');
-    };
-
     // Handle enable notifications button press
     const handleEnable = () => {
         // Add logic for enabling notifications
@@ -46,9 +40,6 @@ const EnableNotifications = () => {
                 <TouchableOpacity style={styles.backButton} onPress={handleBack}>
                     <Icon name="chevron-left" size={24} color="black" />
                     <Text style={styles.backText}>Back</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
-                    <Text style={styles.skipText}>Skip</Text>
                 </TouchableOpacity>
             </View>
         
@@ -103,7 +94,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start', // Changed from 'space-between'
         alignItems: 'center',
         marginTop: 15,
         marginBottom: 20,
@@ -117,14 +108,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: 'black',
         marginLeft: 5,
-        fontFamily:"Satoshi-Medium"
-    },
-    skipButton: {
-        padding: 10,
-    },
-    skipText: {
-        fontSize: 14,
-        color: '#9e9e9e',
         fontFamily:"Satoshi-Medium"
     },
     headingContainer: {
@@ -176,8 +159,6 @@ const styles = StyleSheet.create({
         padding: 15,
         borderRadius: 50,
         alignItems: 'center',
-
-
     },
     notNowButtonText: {
         color: '#9b9b9b',
