@@ -26,7 +26,7 @@ const AddNewCard = () => {
           </TouchableOpacity>
 
           {/* Header */}
-          <Text style={styles.header}>Connect your bank account</Text>
+        <Text style={styles.header} numberOfLines={1} ellipsizeMode='tail'>Connect your bank account</Text>
         </ImageBackground>
 
         {/* Bank Account Card */}
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     alignSelf: 'center',
-    width: '80%',
+    width: '90%',
     // paddingHorizontal: 20,
     marginTop: 20,
     paddingBottom: 30,

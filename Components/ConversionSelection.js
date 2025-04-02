@@ -149,7 +149,10 @@ const styles = StyleSheet.create({
         width: "48%",
         borderWidth: 1,  
         borderColor: '#EFEFEF',
-        height:170,
+        // height:170,
+        minHeight: 170,
+        // justifyContent: "space-between",
+
     },
     selectedCard: {
         borderColor: "rgb(110, 225, 124)",
@@ -169,7 +172,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         borderColor: "rgb(237, 237, 237)",
-        borderWidth: 1.5,
+        borderWidth: 2,
         backgroundColor: "#ffffff",
         alignSelf: "center",
         marginBottom: 20,
@@ -179,7 +182,8 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         fontSize: 14,
-        fontFamily:"Satoshi-Bold"
+        fontFamily:"Satoshi-Bold",
+        width:110,
     },
     confirmButton: {
         backgroundColor: '#e8e8e8',

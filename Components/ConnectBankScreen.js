@@ -22,7 +22,7 @@ const ConnectBankScreen = () => {
         </TouchableOpacity>
 
         {/* Header */}
-        <Text style={styles.header}>Connect your bank account</Text>
+        <Text style={styles.header} numberOfLines={1} ellipsizeMode='tail'>Connect your bank account</Text>
       </ImageBackground>
 
       {/* Bank Account Card */}
@@ -32,9 +32,12 @@ const ConnectBankScreen = () => {
         </View>
         <View style={styles.textContainer}>
           <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>Connect your bank account</Text>
-            <Text style={styles.nextIcon} >
-              <Icon name="chevron-right" size={24} color="black" />
+            <Text
+              style={styles.cardTitle}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >Connect your bank account
+            </Text><Text style={styles.nextIcon} ><Icon name="chevron-right" size={24} color="black" />
             </Text>
           </View>
           <Text style={styles.cardSubtitle}>
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     alignSelf: 'center',
-    width: '80%',
+    width: '90%',
     // paddingHorizontal: 20,
     marginTop: 20,
     paddingBottom: 30,
@@ -88,6 +91,7 @@ const styles = StyleSheet.create({
     fontFamily: "Satoshi-Black"
 
   },
+
   card: {
     backgroundColor: 'white',
     flexDirection: 'row',
@@ -123,7 +127,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5
   },
   nextIcon: {
-    left:20,
+    left: 20,
   },
   cardHeader: {
     flexDirection: "row",
@@ -133,7 +137,8 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 17,
     fontWeight: '500',
-    fontFamily: "Satoshi-Bold"
+    fontFamily: "Satoshi-Bold",
+    flexShrink: 1
   },
   cardSubtitle: {
     fontSize: 16,

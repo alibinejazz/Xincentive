@@ -22,7 +22,7 @@ const CancelSubscriptionModal = ({ visible, onClose }) => {
             <Text style={styles.modalSubtitle}>
               Do you want to cancel your subscription renewal?
             </Text>
-            <Text style={styles.modalSubtitle}>
+            <Text style={styles.modalSubtitle2}>
               Your access to all premium features of Xincentive will end on 01 March, 2025.
             </Text>
 
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     // fontWeight: '500',
     marginBottom: 15,
     textAlign: 'center',
-    width: '80%',
+    width: 250,
     marginTop:15,
     fontFamily:"Satoshi-Medium"//
   },
@@ -91,7 +91,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#9f9f9f',
     marginBottom: 30,
-    width: '90%',
+    width: 200,
+    textAlign: 'center',
+    fontFamily:"Satoshi-Regular"//
+  },
+  modalSubtitle2:{
+    fontSize: 16,
+    color: '#9f9f9f',
+    marginBottom: 30,
+    width: 280,
     textAlign: 'center',
     fontFamily:"Satoshi-Regular"//
   },

@@ -25,7 +25,9 @@ const QRScan = () => {
       </View>
 
       <TouchableOpacity style={styles.connectorButton}>
-        <Text style={styles.connectorButtonText}>Business connector app</Text>
+      <Text style={styles.connectorButtonText} numberOfLines={1} ellipsizeMode="tail">
+  Business connector app
+</Text>
       </TouchableOpacity>
     </View>
   );

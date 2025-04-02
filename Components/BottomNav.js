@@ -6,9 +6,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Image } from 'react-native';
 import activeUser from "../assets/activeUser.png";
 import activeWallet from "../assets/activeWallet.png";
+import activeHome from "../assets/activeHome.png";
+import activeExplore from "../assets/activeExplore.png";
 import explore from "../assets/explore.png";
 import home from "../assets/home.png";
-// import user from "../assets/user11.png";
+import user from "../assets/User.png";
 import wallet from "../assets/wallet.png";
 
 const BottomNav = () => {
@@ -35,10 +37,10 @@ const BottomNav = () => {
   const profileScreens = ['MyProfile', 'EditProfile', "Subscription", "Terms"];
 
   const tabs = [
-    { name: 'Home', icon: home, screen: 'Market' },
-    { name: 'Explore', icon: explore, screen: 'Explore' },
+    { name: 'Home', icon: home,activeIcon: activeHome, screen: 'Market' },
+    { name: 'Explore', icon: explore,activeIcon: activeExplore, screen: 'Explore' },
     { name: 'Wallet', icon: wallet, activeIcon: activeWallet, screen: 'Wallet' },
-    { name: 'Profile', icon: activeUser, screen: 'MyProfile' },
+    { name: 'Profile', icon: user, activeIcon: activeUser, screen: 'MyProfile' },
   ];
 
   if (keyboardVisible) return null; // Hide navbar when keyboard is open
@@ -62,7 +64,7 @@ const BottomNav = () => {
             style={[styles.navButton, isActive ? styles.activeTab : null]}
             onPress={() => navigation.navigate(tab.screen)}
           >
-            <Image source={isActive && tab.activeIcon ? tab.activeIcon : tab.icon} />
+            <Image source={isActive && tab.activeIcon ? tab.activeIcon : tab.icon} style={styles.icon}/>
             {isActive && <Text style={styles.activeText}>{tab.name}</Text>}
           </TouchableOpacity>
         );
@@ -105,5 +107,10 @@ const styles = StyleSheet.create({
     color: 'black',
     marginLeft: 8,
     fontFamily:"Satoshi-Medium"
+  },
+  icon: {
+    width: 24,    // Set your desired size
+    height: 24,
+    resizeMode: 'contain',
   },
 });

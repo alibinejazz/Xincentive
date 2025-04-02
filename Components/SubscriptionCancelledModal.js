@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         // fontWeight: '500',
         marginBottom: 15,
         textAlign: 'center',
-        width: '80%',
+        width: 250,
         marginTop:15,
         fontFamily:"Satoshi-Medium"//
     },
