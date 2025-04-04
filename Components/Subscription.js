@@ -6,6 +6,7 @@ import BottomNav from './BottomNav';
 import CancelSubscriptionModal from './CancelSubscriptionModal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png"; // Background Image
+import Righticon from '../Images/RightIcon';
 import cancel from "../assets/cancel.png";
 import diamond from "../assets/diamond.png";
 import { useNavigation } from '@react-navigation/native';
@@ -61,7 +62,7 @@ const Subscription = () => {
                         <Image source={cancel} style={{ marginBottom: 10 }} />
                         <Text style={styles.title}>Cancel subscription</Text>
                     </View>
-                    <Icon name="chevron-right" color="black" size={24} />
+                    <Righticon />
                 </TouchableOpacity>
             </ScrollView>
 
