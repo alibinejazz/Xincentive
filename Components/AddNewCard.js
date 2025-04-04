@@ -1,18 +1,58 @@
-import { Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ImageBackground, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
 
-import BottomNav from './BottomNav'; // Import BottomNav
+import BackIcon from '../Images/BackIcon';
+import BottomNav from './BottomNav';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png";
-import LinearGradient from 'react-native-linear-gradient';
-import React from 'react';
-import add from "../assets/add.png"
-import creditcard from "../assets/creditcard.png"
-import lock from "../assets/lock.png"
+import { WebView } from 'react-native-webview';
+import add from "../assets/add.png";
+import creditcard from "../assets/creditcard.png";
+import lock from "../assets/lock.png";
 import { useNavigation } from '@react-navigation/native';
 
 const AddNewCard = () => {
   const navigation = useNavigation();
+  const [showWebView, setShowWebView] = useState(false);
+  const [connectUrl, setConnectUrl] = useState('');
 
+  const handleAddNewCard = async () => {
+    try {
+      // Replace with your actual Basiq Connect URL with API key
+      const url = `https://connect.basiq.io/46fdab54-cc31-43d4-bd46-d6663c267386?action=connect`;
+      setConnectUrl(url);
+      setShowWebView(true);
+      
+      // Alternatively, open in device browser:
+      // Linking.openURL(url);
+    } catch (error) {
+      console.error('Failed to connect bank account:', error);
+      // Show error to user (you might want to add an alert here)
+    }
+  };
+
+  const handleNavigationStateChange = (navState) => {
+    // Check if the user has completed the connection process
+    if (navState.url.includes('success')) {
+      setShowWebView(false);
+      // Handle successful connection (e.g., refresh accounts)
+      // You might want to navigate to a success screen or show a message
+    } else if (navState.url.includes('error')) {
+      setShowWebView(false);
+      // Handle connection error
+      // You might want to show an error message to the user
+    }
+  };
+
+  if (showWebView) {
+    return (
+      <WebView
+        source={{ uri: connectUrl }}
+        onNavigationStateChange={handleNavigationStateChange}
+        style={{ flex: 1 }}
+      />
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -21,16 +61,17 @@ const AddNewCard = () => {
         <ImageBackground source={LinearBackground} style={styles.headerContainer} resizeMode="cover">
           {/* Back Button */}
           <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-            <Icon name="chevron-left" size={24} color="black" />
+            {/* <Icon name="chevron-left" size={24} color="black" /> */}
+            <BackIcon/>
             <Text style={styles.backText}>Back</Text>
           </TouchableOpacity>
 
           {/* Header */}
-        <Text style={styles.header} numberOfLines={1} ellipsizeMode='tail'>Connect your bank account</Text>
+          <Text style={styles.header} numberOfLines={1} ellipsizeMode='tail'>Connect your bank account</Text>
         </ImageBackground>
 
         {/* Bank Account Card */}
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={handleAddNewCard}>
           <View style={styles.iconContainer}>
             <Image source={add} />
           </View>
@@ -74,7 +115,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    paddingBottom: 100, // Ensures scrolling space
+    paddingBottom: 100,
   },
   headerContainer: {
     width: '110%',
@@ -100,12 +141,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     alignSelf: 'center',
     width: '90%',
-    // paddingHorizontal: 20,
     marginTop: 20,
     paddingBottom: 30,
-    // backgroundColor:'pink',
     fontFamily: "Satoshi-Black"
-
   },
   card: {
     backgroundColor: 'white',
@@ -138,7 +176,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 30,
     overflow: 'hidden',
-    height: 120, // Fix: height should be a number, not a string
+    height: 120,
   },
   iconContainer: {
     padding: 10,

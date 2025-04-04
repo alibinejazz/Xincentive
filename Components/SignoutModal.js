@@ -1,4 +1,6 @@
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+import CancelIcon from '../Images/CancelIcon';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -12,7 +14,8 @@ const SignOutModal = ({ visible, onConfirm, onCancel }) => {
         <View style={styles.modalBoxContainer}>
           {/* Close Button */}
           <TouchableOpacity style={styles.closeButton} onPress={onCancel}>
-            <Icon name="close" size={30} color="black" />
+            {/* <Icon name="close" size={30} color="black" /> */}
+            <CancelIcon/>
           </TouchableOpacity>
 
           {/* Modal Box */}

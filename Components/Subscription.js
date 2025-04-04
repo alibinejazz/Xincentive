@@ -1,6 +1,7 @@
 import { Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 
+import BackIcon from '../Images/BackIcon';
 import BottomNav from './BottomNav';
 import CancelSubscriptionModal from './CancelSubscriptionModal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -20,7 +21,8 @@ const Subscription = () => {
                 {/* Background Image for Header */}
                 <ImageBackground source={LinearBackground} style={styles.headerContainer}>
                     <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                        <Icon name="chevron-left" size={24} color="black" />
+                        {/* <Icon name="chevron-left" size={24} color="black" /> */}
+                        <BackIcon/>
                         <Text style={styles.backText}>Back</Text>
                     </TouchableOpacity>
                     <Text style={styles.header}>My Subscription</Text>

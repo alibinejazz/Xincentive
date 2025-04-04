@@ -7,13 +7,13 @@ import {
     View,
 } from 'react-native';
 
+import BackIcon from '../Images/BackIcon';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import NotificationIcon from '../assets/NotificationsIcon.png'; // Replace with your icon
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const { height } = Dimensions.get('window'); // Get screen height
-
 const EnableNotifications = () => {
     const navigation = useNavigation();
     // Handle back button press
@@ -36,12 +36,12 @@ const EnableNotifications = () => {
     return (
         <>
         <View style={styles.screenContainer}>
-        <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-                    <Icon name="chevron-left" size={24} color="black" />
-                    <Text style={styles.backText}>Back</Text>
-                </TouchableOpacity>
-            </View>
+        <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+    <View style={styles.backIconContainer}>
+        <BackIcon />
+    </View>
+    <Text style={styles.backText}>Back</Text>
+    </TouchableOpacity>
         
         <View style={styles.container}>
 
@@ -101,15 +101,29 @@ const styles = StyleSheet.create({
         padding:10
     },
     backButton: {
+        marginTop: 15,
+        marginBottom: 20,
+        padding: 8,
         flexDirection: 'row',
         alignItems: 'center',
-    },
-    backText: {
+        // marginLeft: 8, // Add some left margin if needed
+      },
+      backIconContainer: {
+        width: 20,
+        height: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 0, 
+        marginLeft:4// Space between icon and text
+      },
+      backText: {
         fontSize: 14,
         color: 'black',
-        marginLeft: 5,
-        fontFamily:"Satoshi-Medium"
-    },
+        marginLeft: 4, // Adjust as needed
+        fontFamily: "Satoshi-Medium",
+        includeFontPadding: false, // This helps with vertical alignment
+        textAlignVertical: 'center',
+      },
     headingContainer: {
         marginBottom: 20,
     },

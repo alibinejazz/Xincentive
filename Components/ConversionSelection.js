@@ -1,12 +1,14 @@
 import { Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
+import BackIcon from '../Images/BackIcon';
 import BottomNav from './BottomNav'; // Import BottomNav
 import CryptoConversion from './CryptoConversion';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png";
 import LinearGradient from 'react-native-linear-gradient';
 import QRScan from './QRscan';
+import Success from "../assets/Check.png"
 import crypto from "../assets/crypto.png";
 import dollars from "../assets/dollars.png";
 import { useNavigation } from '@react-navigation/native';
@@ -22,7 +24,8 @@ const ConversionSelection = () => {
                  <ImageBackground source={LinearBackground} style={styles.headerContainer} resizeMode="cover">
                           {/* Back Button */}
                           <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-                            <Icon name="chevron-left" size={24} color="black" />
+                            {/* <Icon name="chevron-left" size={24} color="black" /> */}
+                            <BackIcon/>
                             <Text style={styles.backText}>Back</Text>
                           </TouchableOpacity>
                 
@@ -39,7 +42,8 @@ const ConversionSelection = () => {
                         {/* Checkmark if selected */}
                         {selectedOption === 'Dollars' && (
                             <View style={styles.checkmarkContainer}>
-                                <Icon name="check-circle" size={30} color="rgb(110, 225, 124)" />
+                                {/* <Icon name="check-circle" size={30} color="rgb(110, 225, 124)" /> */}
+                                <Image style={{height:24,width:24}} source={Success}/>
                             </View>
                         )}
 
@@ -58,7 +62,8 @@ const ConversionSelection = () => {
                         {/* Checkmark if selected */}
                         {selectedOption === 'Crypto' && (
                             <View style={styles.checkmarkContainer}>
-                                <Icon name="check-circle" size={30} color="rgb(110, 225, 124)" />
+                                {/* <Icon name="check-circle" size={30} color="rgb(110, 225, 124)" /> */}
+                                <Image style={{height:24,width:24}} source={Success}/>
                             </View>
                         )}
 

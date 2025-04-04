@@ -22,17 +22,17 @@ const onboardingData = [
     heading: 'Welcome to Xincentive, the one spot for all',
     image: require('../assets/image1.png'),
     buttonText: 'Get Started',
-    backgroundColor: '#1A1A1A', // Background color for slide 1
+    backgroundColor: '#1A1A1A',
   },
   {
     heading: 'You can convert into XNT or Cashback',
     image: require('../assets/image1.png'),
     buttonText: 'Get Started',
-    backgroundColor: '#1A1A1A', // Background color for slide 2
+    backgroundColor: '#1A1A1A',
   },
   {
     heading: 'Connect your bank account',
-    image: Image3, // Now using SVG component
+    image: Image3,
     buttonText: 'Get Started',
     backgroundColor: '#E79420',
   },
@@ -40,19 +40,19 @@ const onboardingData = [
     heading: 'Spend money earn cash back',
     image: Image4,
     buttonText: 'Get Started',
-    backgroundColor: '#F88121', // Background color for slide 2
+    backgroundColor: '#F88121',
   },
   {
     heading: 'Convert cash back into tokens',
     image: Image5,
     buttonText: 'Get Started',
-    backgroundColor: '#E95237', // Background color for slide 3
+    backgroundColor: '#E95237',
   },
   {
     heading: 'Get Cash back on every purchases',
     image: Image6,
     buttonText: 'Get Started',
-    backgroundColor: '#FF9331', // Background color for slide 4
+    backgroundColor: '#FF9331',
   },
 ];
 
@@ -63,30 +63,29 @@ const OnboardingCarousel = ({ navigation }) => {
   const goToNextSlide = () => {
     if (currentIndex < onboardingData.length - 1) {
       const nextIndex = currentIndex + 1;
-      setCurrentIndex(nextIndex); // Update the current index
-      scrollViewRef.current.scrollTo({ x: nextIndex * screenWidth, animated: true }); // Scroll to the next slide
+      setCurrentIndex(nextIndex);
+      scrollViewRef.current.scrollTo({ x: nextIndex * screenWidth, animated: true });
     } else {
-      navigation.replace('Market'); // Navigate to "Market" when reaching the last slide
+      navigation.replace('Market');
     }
   };
-  
 
   const goToPreviousSlide = () => {
     if (currentIndex > 0) {
       const prevIndex = currentIndex - 1;
-      setCurrentIndex(prevIndex); // Update the current index
-      scrollViewRef.current.scrollTo({ x: prevIndex * screenWidth, animated: true }); // Scroll to the previous slide
+      setCurrentIndex(prevIndex);
+      scrollViewRef.current.scrollTo({ x: prevIndex * screenWidth, animated: true });
     }
   };
 
   const handleScreenTap = (event) => {
-    const tapX = event.nativeEvent.locationX; // X-coordinate of the tap
-    const screenMiddle = screenWidth / 2; // Middle of the screen
+    const tapX = event.nativeEvent.locationX;
+    const screenMiddle = screenWidth / 2;
 
     if (tapX > screenMiddle) {
-      goToNextSlide(); // Tap on the right side
+      goToNextSlide();
     } else {
-      goToPreviousSlide(); // Tap on the left side
+      goToPreviousSlide();
     }
   };
 
@@ -111,7 +110,7 @@ const OnboardingCarousel = ({ navigation }) => {
           </View>
           <View style={styles.logoContainer}>
             <Image
-              source={require('../assets/LogoInitial.png')} // Replace with your logo path
+              source={require('../assets/LogoInitial.png')}
               style={styles.logo}
               resizeMode="contain"
             />
@@ -119,28 +118,37 @@ const OnboardingCarousel = ({ navigation }) => {
           </View>
         </View>
 
-        {/* ScrollView for Carousel */}
+        {/* ScrollView for Carousel and Buttons */}
         <ScrollView
           ref={scrollViewRef}
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
-          scrollEnabled={false} // Disable swipe gestures
+          scrollEnabled={false}
+          contentContainerStyle={styles.scrollViewContent}
         >
           {onboardingData.map((item, index) => (
-            <View
-              key={index}
-              style={styles.slide}
+            <View 
+            key={index} 
+            style={[
+              styles.slideContainer,
+              index === onboardingData.length - 1 && styles.lastSlideContainer
+            ]}
+          >
+            <View 
+              style={[
+                styles.slide,
+                index === onboardingData.length - 1 && screenHeight < 700 && styles.lastSlidePaddingFix
+              ]}
             >
-              {/* Heading */}
               <View style={[
                 styles.headingContainer,
-                (index === 0 || index === 1) && styles.headingWidth300, // Apply width 300 for first and second slides
+                (index === 0 || index === 1) && styles.headingWidth300,
               ]}>
                 <Text style={styles.heading}>{item.heading}</Text>
               </View>
-              {/* Image */}
-              {/* Image */}
+          
+              {/* Image rendering */}
               {item.image && typeof item.image === 'number' ? (
                 <Image
                   source={item.image}
@@ -159,51 +167,56 @@ const OnboardingCarousel = ({ navigation }) => {
                 </View>
               )}
             </View>
+          
+
+              <View style={[
+                styles.buttonContainer,
+                index === onboardingData.length - 1 && styles.lastButtonContainer
+              ]}>
+                {/* Keep Get Started button on all screens */}
+                <TouchableOpacity 
+                  style={[
+                    styles.button,
+                    index === 0 && styles.firstScreenButton
+                  ]} 
+                  onPress={() => navigation.navigate('Login')}
+                >
+                  <Text style={[
+                    styles.buttonText,
+                    index === 0 && styles.firstScreenButtonText
+                  ]}>
+                    Get Started
+                  </Text>
+                </TouchableOpacity>
+
+                {/* Show "Have an account?" text on all screens except last */}
+                {index !== onboardingData.length - 1 && (
+                  <TouchableOpacity onPress={() => navigation.navigate('AppsLogin')}>
+                    <Text style={styles.signInText}>
+                      Have an account?{' '}
+                      <Text
+                        style={styles.signInLink}
+                        onPress={() => navigation.navigate('AppsLogin')}
+                      >
+                        Sign In
+                      </Text>
+                    </Text>
+                  </TouchableOpacity>
+                )}
+
+                {/* Additional Login button only on last screen */}
+                {index === onboardingData.length - 1 && (
+                  <TouchableOpacity
+                    style={[styles.button, styles.loginButton]}
+                    onPress={() => navigation.navigate('Login')}
+                  >
+                    <Text style={[styles.buttonText, styles.loginButtonText]}>Login</Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+            </View>
           ))}
         </ScrollView>
-
-        {/* Button */}
-        <View style={styles.buttonContainer}>
-          {/* Get Started Button */}
-          <TouchableOpacity 
-            style={[
-              styles.button,
-              currentIndex === 0 && styles.firstScreenButton // Apply only to first screen
-            ]} 
-            onPress={() => navigation.navigate('Login')}
-          >
-            <Text style={[
-              styles.buttonText,
-              currentIndex === 0 && styles.firstScreenButtonText // Apply only to first screen
-            ]}>
-              Get Started
-            </Text>
-          </TouchableOpacity>
-          {/* Render "Have an account? Sign in" on all slides except the last one */}
-          {currentIndex !== onboardingData.length - 1 && (
-            <TouchableOpacity onPress={() => navigation.navigate('AppsLogin')}>
-              <Text style={styles.signInText}>
-                Have an account?{' '}
-                <Text
-                  style={styles.signInLink}
-                  onPress={() => navigation.navigate('AppsLogin')}
-                >
-                  Sign In
-                </Text>
-              </Text>
-            </TouchableOpacity>
-          )}
-
-          {/* Render Login button only on the last slide */}
-          {currentIndex === onboardingData.length - 1 && (
-            <TouchableOpacity
-              style={[styles.button, styles.loginButton]}
-              onPress={() => navigation.navigate('Login')}
-            >
-              <Text style={[styles.buttonText, styles.loginButtonText]}>Login</Text>
-            </TouchableOpacity>
-          )}
-        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -231,7 +244,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     fontWeight: '300',
-    fontFamily:"Satoshi-Medium"
+    fontFamily: "Satoshi-Medium"
   },
   progressContainer: {
     width: '100%',
@@ -252,18 +265,25 @@ const styles = StyleSheet.create({
   progressFill: {
     backgroundColor: '#fff',
   },
-  slide: {
+  scrollViewContent: {
+    flexGrow: 1,
+  },
+  slideContainer: {
     width: screenWidth,
+    flex: 1,
+  },
+  slide: {
+    flex: 1,
     alignItems: 'center',
-    marginVertical: 25,
-    padding: 20,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
   },
   headingContainer: {
     alignItems: 'center',
-    width:245,
+    width: 245,
   },
   headingWidth300: {
-    width: 330, // Set width to 300 for first and second slides
+    width: 330,
   },
   heading: {
     fontSize: 28,
@@ -271,16 +291,16 @@ const styles = StyleSheet.create({
     fontWeight: 'semibold',
     textAlign: 'center',
     color: '#fff',
-    fontFamily:"Satoshi-Bold"
+    fontFamily: "Satoshi-Bold"
   },
   image: {
-    width: 180,
-    height: 300,
-    marginVertical: 30,
+    // width: 180,
+    // height: 300,
+    marginVertical: 20,
     borderRadius: 12,
-    marginTop: 30,
-    justifyContent: 'center', // For SVG
-    alignItems: 'center',    // For SVG
+    justifyContent: 'center',
+    alignItems: 'center',
+    // paddingBottom:50,
   },
   fullWidthImage: {
     width: screenWidth,
@@ -290,9 +310,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: 'center',
-    position: 'absolute',
-    bottom: 50, // Fixed position for all slides
-    width: '100%',
+    paddingBottom: 50,
+    paddingHorizontal: 20,
   },
   button: {
     padding: 15,
@@ -311,32 +330,40 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 18,
-    // fontWeight: 'bold',
-    fontFamily:"Satoshi-Bold"
+    fontFamily: "Satoshi-Bold"
   },
   loginButtonText: {
     color: '#ffffff',
-    },
+  },
   signInText: {
     color: '#ffffff',
     fontSize: 16,
     marginTop: 10,
     alignSelf: 'center',
-    fontFamily:"Satoshi-Regular"
+    fontFamily: "Satoshi-Regular"
   },
   signInLink: {
-    color: '#ffffff', // Change to your desired highlight color
-    fontFamily:"Satoshi-Bold"
+    color: '#ffffff',
+    fontFamily: "Satoshi-Bold"
   },
-  
-  // New styles for first screen button
   firstScreenButton: {
-    backgroundColor: '#E8E8E8', // Light gray background
+    backgroundColor: '#E8E8E8',
   },
   firstScreenButtonText: {
-    color: '#232323', // Dark text
-    opacity: 0.6, // 60% opacity
+    color: '#232323',
+    opacity: 0.6,
   },
+  lastSlideContainer: {
+    paddingTop: 70, // Extra padding for last slide to prevent text cutoff
+  },
+  lastButtonContainer: {
+    paddingBottom: 60, // Extra padding for last slide buttons
+    // marginTop: 30, // Additional space between image and buttons
+  },
+  lastSlidePaddingFix: {
+    paddingBottom: 80, // adds space below the image on small screens
+  },
+  
 
 });
 

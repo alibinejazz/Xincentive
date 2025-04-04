@@ -6,8 +6,9 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
+import BackIcon from '../Images/BackIcon';
 import Email from '../assets/Email.png';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Phone from '../assets/Phone.png';
@@ -20,8 +21,32 @@ const Login = () => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [isFocused, setIsFocused] = useState(false);
     const [activeInput, setActiveInput] = useState(null);
+
+    // Refs for inputs
+    const fullNameRef = useRef(null);
+    const emailRef = useRef(null);
+    const phoneRef = useRef(null);
+
+    useEffect(() => {
+        // Auto-focus on the correct input when step changes
+        switch (step) {
+            case 1:
+                fullNameRef.current?.focus();
+                setActiveInput('fullName');
+                break;
+            case 2:
+                emailRef.current?.focus();
+                setActiveInput('email');
+                break;
+            case 3:
+                phoneRef.current?.focus();
+                setActiveInput('phone');
+                break;
+            default:
+                break;
+        }
+    }, [step]); // Run effect when step changes
 
     const handleContinue = () => {
         if (step < 3) {
@@ -57,7 +82,8 @@ const Login = () => {
                 placeholder: 'Enter your full name',
                 value: fullName,
                 onChangeText: setFullName,
-                key: 'fullName'
+                key: 'fullName',
+                ref: fullNameRef
             };
             case 2: return {
                 heading: "What's your email address?",
@@ -66,7 +92,8 @@ const Login = () => {
                 placeholder: 'Enter your email address',
                 value: email,
                 onChangeText: setEmail,
-                key: 'email'
+                key: 'email',
+                ref: emailRef
             };
             case 3: return {
                 heading: "What's your phone number?",
@@ -75,7 +102,8 @@ const Login = () => {
                 placeholder: 'Enter your phone number',
                 value: phoneNumber,
                 onChangeText: setPhoneNumber,
-                key: 'phone'
+                key: 'phone',
+                ref: phoneRef
             };
             default: return {};
         }
@@ -85,10 +113,13 @@ const Login = () => {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-                <Icon name="chevron-left" size={24} color="black" />
-                <Text style={styles.backText}>Back</Text>
-            </TouchableOpacity>
+
+    <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+    <View style={styles.backIconContainer}>
+        <BackIcon />
+    </View>
+    <Text style={styles.backText}>Back</Text>
+    </TouchableOpacity>
 
             <View style={styles.contentContainer}>
                 <View style={styles.headingContainer}>
@@ -101,7 +132,7 @@ const Login = () => {
 
                 <View style={[
                     styles.inputContainer,
-                    activeInput === stepData.key && styles.inputContainerFocused
+                    activeInput === stepData.key ? styles.inputContainerFocused : { borderColor: '#D8DADC' }
                 ]}>
                     <View style={styles.inputHeader}>
                         <Image source={stepData.image} style={styles.coinIcon} />
@@ -114,24 +145,16 @@ const Login = () => {
                     </View>
 
                     <TextInput
-                        style={[
-                            styles.input,
-                            stepData.value && styles.filledInput
-                        ]}
+                        ref={stepData.ref}
+                        style={styles.input}
                         placeholder={stepData.placeholder}
                         placeholderTextColor="#9E9E9E"
                         value={stepData.value}
                         onChangeText={stepData.onChangeText}
                         keyboardType={step === 2 ? 'email-address' : step === 3 ? 'phone-pad' : 'default'}
-                        onFocus={() => {
-                            setIsFocused(true);
-                            setActiveInput(stepData.key);
-                        }}
-                        onBlur={() => {
-                            setIsFocused(false);
-                            setActiveInput(null);
-                        }}
-                        selectionColor="#232322" // Cursor color
+                        onFocus={() => setActiveInput(stepData.key)}
+                        onBlur={() => setActiveInput(null)}
+                        selectionColor="#232322"
                     />
                 </View>
 
@@ -141,7 +164,7 @@ const Login = () => {
                         isInputFilled() && styles.continueButtonActive,
                     ]}
                     disabled={!isInputFilled()}
-                    onPress={step < 3 ? handleContinue : () => navigation.navigate('Otp')}
+                    onPress={handleContinue}
                 >
                     <Text style={[
                         styles.continueButtonText,
@@ -173,16 +196,27 @@ const styles = StyleSheet.create({
     backButton: {
         marginTop: 15,
         marginBottom: 20,
-        padding: 10,
+        padding: 8,
         flexDirection: 'row',
         alignItems: 'center',
-    },
-    backText: {
+        // marginLeft: 8, // Add some left margin if needed
+      },
+      backIconContainer: {
+        width: 20,
+        height: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 0, 
+        marginLeft:4// Space between icon and text
+      },
+      backText: {
         fontSize: 14,
         color: 'black',
-        marginLeft: 5,
-        fontFamily: "Satoshi-Medium"
-    },
+        marginLeft: 4, // Adjust as needed
+        fontFamily: "Satoshi-Medium",
+        includeFontPadding: false, // This helps with vertical alignment
+        textAlignVertical: 'center',
+      },
     contentContainer: {
         flex: 1,
         paddingHorizontal: 20,
@@ -205,40 +239,45 @@ const styles = StyleSheet.create({
     inputContainer: {
         marginBottom: 40,
         borderWidth: 1,
-        borderColor: '#F2F2F2',
-        padding: 10,
+        padding: 15,
         borderRadius: 10,
     },
     inputContainerFocused: {
-        borderColor: '#232322', // Active input field color
+        borderColor: '#232322',
     },
     inputHeader: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 10,
+        marginBottom: 15,
+    },
+    coinIcon: {
+        width: 20,
+        height: 20,
+        resizeMode: 'contain',
+        marginRight: 10,
     },
     inputLabel: {
         fontSize: 14,
-        color: '#9E9E9E', // Placeholder color
-        marginBottom: 5,
-        marginHorizontal: 10,
-        fontFamily: "Satoshi-Regular"
+        color: '#9E9E9E',
+        fontFamily: "Satoshi-Regular",
+        includeFontPadding: false,
+        textAlignVertical: 'center',
     },
     filledInputLabel: {
-        color: '#232322', // Label color after text is entered
+        color: '#232322',
     },
     mandatory: {
         color: 'red',
     },
     input: {
-        borderRadius: 5,
-        padding: 10,
         fontSize: 24,
-        fontFamily: "Satoshi-Bold",
-        color: '#232322', // Text color
-    },
-    filledInput: {
-        // Additional styles for filled input if needed
+        fontFamily: "Satoshi-Medium",
+        color: '#232322',
+        padding: 0,
+        margin: 0,
+        includeFontPadding: false,
+        textAlignVertical: 'center',
+        minHeight: 30, // Added minimum height to ensure placeholder is visible
     },
     continueButton: {
         backgroundColor: '#F2F2F2',
@@ -247,7 +286,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     continueButtonActive: {
-        backgroundColor: '#6FE17C', // Button color after action
+        backgroundColor: '#6FE17C',
     },
     continueButtonText: {
         color: '#B8BBBA',
@@ -255,7 +294,7 @@ const styles = StyleSheet.create({
         fontFamily: "Satoshi-Bold"
     },
     continueButtonTextActive: {
-        color: '#232322', // Button text color after action
+        color: '#232322',
     },
     centeredText: {
         textAlign: 'center',

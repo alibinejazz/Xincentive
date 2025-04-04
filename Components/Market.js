@@ -3,10 +3,9 @@ import React, { useRef, useState } from 'react';
 
 import BottomNav from './BottomNav';
 import CandlestickChartComponent from './CandleStickChartExample';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import LinearBackground from "../assets/gradient.png"; // Background Image
+import LinearBackground from "../assets/gradient.png";
 import blacktri from "../assets/blacktri.png";
-import diamond from "../assets/diamond.png"
+import diamond from "../assets/diamond.png";
 import { useNavigation } from '@react-navigation/native';
 
 const Market = () => {
@@ -29,62 +28,62 @@ const Market = () => {
     ];
 
     const progressWidth = scrollX.interpolate({
-        inputRange: [0, (dates.length - 4) * 50],  // Adjusted for proper scaling
+        inputRange: [0, (dates.length - 4) * 50],
         outputRange: ["10%", "100%"],
         extrapolate: 'clamp',
     });
 
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                {/* Background Image for Header */}
+            <ScrollView 
+                contentContainerStyle={styles.scrollContainer}
+                showsVerticalScrollIndicator={false}
+            >
                 <ImageBackground source={LinearBackground} style={styles.headerContainer}>
-    {/* Header Row */}
-    <View style={styles.headerRow}>
-        <Text style={styles.header}>Market</Text>
+                    <View style={styles.headerRow}>
+                        <Text style={styles.header}>Market</Text>
+                        <View style={styles.diamondBadge}>
+                            <View style={styles.diamondCircle}>
+                                <Image source={diamond} style={styles.diamondIcon} resizeMode="contain" />
+                            </View>
+                        </View>
+                    </View>
 
-        {/* Diamond Badge */}
-        <View style={styles.diamondBadge}>
-            <View style={styles.diamondCircle}>
-                <Image source={diamond} style={styles.diamondIcon} resizeMode="contain" />
-            </View>
-        </View>
-    </View>
+                    <View style={styles.priceTrendBorderWrapper}>
+                        <View style={styles.priceTrendContainer}>
+                            <View style={styles.priceSection}>
+                                <Text style={styles.priceLabel}>XNTV Price</Text>
+                                <Text style={styles.price}>$1,23</Text>
+                            </View>
 
-    {/* Price Trend View */}
-    <View style={styles.priceTrendBorderWrapper}>
-        <View style={styles.priceTrendContainer}>
-            {/* XNTV Price Section */}
-            <View style={styles.priceSection}>
-                <Text style={styles.priceLabel}>XNTV Price</Text>
-                <Text style={styles.price}>$1,23</Text>
-            </View>
+                            {/* Coin Icon placed between price and trend */}
+                            <View style={styles.coinIconContainer}>
+                                <Image source={require('./Xcoin.png')} style={styles.coinIcon} />
+                            </View>
 
-            {/* XNTV Coin Icon */}
-            <Image source={require('./Xcoin.png')} style={styles.coinIcon} />
+                            <View style={styles.trendSection}>
+                                <View style={styles.trendContent}>
+                                    <Text style={styles.trendLabel}>This Week</Text>
+                                    <View style={styles.trendRow}>
+                                        <Text style={styles.trend} numberOfLines={1}>
+                                            +10.03%
+                                        </Text>
+                                        <Image source={blacktri} style={styles.trendIcon} />
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                </ImageBackground>
 
-            {/* Trend Section */}
-            <View style={styles.trendSection}>
-                <Text style={styles.trendLabel}>This Week</Text>
-                <View style={styles.trendRow}>
-                    <Text style={styles.trend}>+10.03 %</Text>
-                    <Image source={blacktri} style={styles.trendIcon} />
-                </View>
-            </View>
-        </View>
-    </View>
-</ImageBackground>
-
-
-                {/* Candlestick Chart */}
                 <View style={styles.chartContainer}>
                     <CandlestickChartComponent />
                 </View>
+                
+                <View style={{ height: 100 }} />
             </ScrollView>
 
-            {/* Sticky Date Selector */}
             <View style={styles.stickyDateContainer}>
-                {/* Progress Indicator */}
                 <View style={styles.progressBarContainer}>
                     <Animated.View style={[styles.progressBar, { width: progressWidth }]} />
                 </View>
@@ -115,7 +114,6 @@ const Market = () => {
                 />
             </View>
 
-            {/* Bottom Navigation */}
             <BottomNav />
         </View>
     );
@@ -127,121 +125,125 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffffff',
-        paddingBottom: 60,
+    },
+    scrollContainer: {
+        paddingBottom: 160,
     },
     headerContainer: {
         paddingTop: 40,
-        paddingBottom: 0,
+        paddingBottom: 20,
         paddingHorizontal: 20,
         alignItems: 'center',
         resizeMode: 'cover',
         borderBottomWidth: 0.8,
         borderColor: "#cbc9cc",
-        position: 'relative', // Needed for absolute positioning of diamond
+        position: 'relative',
     },
-    
+    headerContent: {
+        width: '100%',
+        alignItems: 'center',
+    },
     headerRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center', // Centers Market text
+        justifyContent: 'center',
         width: '100%',
-        position: "relative", // Ensures the diamond doesn’t shift Market text
+        position: "relative",
     },
-    
     header: {
         fontSize: 24,
         textAlign: 'center',
         color: '#000000',
-        fontFamily:"Satoshi-Black"
+        fontFamily: "Satoshi-Black"
     },
-    
     diamondBadge: {
         position: 'absolute',
-        right: -5, // Moves it to the right
-        top: -15, // Aligns it with the Market text
+        right: -5,
+        top: -15,
     },
-    
     diamondCircle: {
         width: 56, 
         height: 56,
-        borderRadius: 50, // Makes it a perfect circle
-        backgroundColor: '#6ee17c', // Green background
+        borderRadius: 50,
+        backgroundColor: '#6ee17c',
         borderWidth: 1.5,
-        borderColor: '#ffca0d', // Yellow border
+        borderColor: '#ffca0d',
         justifyContent: 'center',
         alignItems: 'center',
     },
-    
     diamondIcon: {
-        // width: 20, // Adjust size for diamond
-        // height: 20,
+        width: 38,
+        height: 38,
     },
-    
-    priceTrendBorderWrapper: {
-        width: '90%',
-        marginTop: 20,
-        paddingVertical: 15,
-        borderRadius: 10,
-    },
-    priceTrendContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        width: "100%",
-        paddingHorizontal: 20,
-        gap: 5,
-    },
-    priceSection: {
-        alignItems: 'center',
-    },
-    priceLabel: {
-        fontSize: 16,
-        color: 'gray',
-        fontFamily:"Satoshi-Medium"
-    },
-    price: {
-        fontSize: 32,
-        fontWeight: '500',
-        fontFamily:"Satoshi-Medium"
+    coinIconWrapper: {
+        marginTop: 10,
+        marginBottom: 15,
     },
     coinIcon: {
         width: 50,
         height: 50,
-        marginHorizontal: 26
+    },
+    priceTrendBorderWrapper: {
+        width: '100%',
+        marginTop:50,
+    },
+    priceTrendContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+        paddingHorizontal: 20, // Equal padding on both sides
+    },
+    priceSection: {
+        flex: 1,
+        alignItems: 'flex-start',
+    },
+    coinIconContainer: {
+        marginHorizontal: 20, // Equal spacing on both sides of the icon
+    },
+    priceLabel: {
+        fontSize: 12,
+        color: 'gray',
+        fontFamily: "Satoshi-Medium",
+        marginBottom: 4,
+    },
+    price: {
+        fontSize: 24,
+        fontFamily: "Satoshi-Medium",
     },
     trendSection: {
-        alignItems: "flex-start",
+        flex: 1,
+        alignItems: 'flex-end',
+    },
+    trendContent: {
+        alignItems: 'flex-end',
     },
     trendRow: {
         flexDirection: "row",
         alignItems: "center",
     },
-    trendLabel: {
-        fontSize: 16,
-        color: 'gray',
-        alignSelf:"center",
-        fontFamily:"Satoshi-Medium"
+    trend: {
+        fontSize: 24,
+        fontFamily: "Satoshi-Medium",
+        marginRight: 8,
+        includeFontPadding: false,
+        textAlignVertical: 'center',
     },
     trendIcon: {
         width: 10,
         height: 10,
-        marginLeft: 10,
-        marginBottom: 20,
-    },
-    trend: {
-        fontSize: 28,
-        // fontWeight: '500',
-        fontFamily:"Satoshi-Medium"
     },
     chartContainer: {
         justifyContent: "center",
         alignItems: "center",
         marginBottom: 20,
-        marginTop:50
+        marginTop: 120,
     },
     stickyDateContainer: {
         position: "absolute",
-        bottom: 60, // Positioned above BottomNav
-        width: "100%",
+        bottom: 60,
+        left: 0,
+        right: 0,
         backgroundColor: "#fff",
         borderTopWidth: 1,
         borderBottomWidth: 1,
@@ -254,10 +256,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#eee",
     },
     progressBar: {
-        position:"absolute",
+        position: "absolute",
         height: 0.8,
         backgroundColor: "#000000",
-        bottom:0
+        bottom: 0
     },
     flatListContent: {
         paddingVertical: 10,
@@ -269,15 +271,21 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 8,
     },
+    trendLabel: {
+        fontSize: 12,
+        color: 'gray',
+        fontFamily: "Satoshi-Medium",
+        marginBottom: 4,
+        alignSelf:"center"
+    },
     dayText: {
         fontSize: 14,
         color: "#777",
-        fontFamily:"Satoshi-Regular"
+        fontFamily: "Satoshi-Regular"
     },
     dateText: {
         fontSize: 16,
         color: "#000",
-        fontFamily:"Satoshi-Medium"
-
+        fontFamily: "Satoshi-Medium"
     },
 });

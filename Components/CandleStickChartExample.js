@@ -1,13 +1,47 @@
+import { Dimensions, Image, ScrollView, Text, View } from "react-native";
+import { G, Line, Rect, Svg } from "react-native-svg";
+
 import React from "react";
-import { View, Text, Dimensions, ScrollView, Image } from "react-native";
-import { Svg, G, Line, Rect } from "react-native-svg";
-import arrowRed from "../assets/arrow-down-red.png";
 import arrowGreen from "../assets/arrow-down-green.png";
-import mockData from "./candleData.json";
+import arrowRed from "../assets/arrow-down-red.png";
+
+// Generate more realistic fluctuating data
+const generateMockData = () => {
+  const data = [];
+  let currentPrice = 1000; // Starting price
+  const volatility = 15; // How much the price can change each step
+  
+  for (let i = 0; i < 100; i++) {
+    // Random price change (-volatility to +volatility)
+    const change = (Math.random() * 2 - 1) * volatility;
+    const newPrice = currentPrice + change;
+    
+    // Ensure prices stay within reasonable bounds
+    const high = Math.max(currentPrice, newPrice) + Math.random() * 10;
+    const low = Math.min(currentPrice, newPrice) - Math.random() * 10;
+    
+    // Determine open/close - sometimes make them equal for a "doji" candle
+    const isDoji = Math.random() > 0.85;
+    const open = isDoji ? currentPrice : currentPrice;
+    const close = isDoji ? currentPrice : newPrice;
+    
+    data.push({
+      open,
+      high,
+      low,
+      close,
+    });
+    
+    currentPrice = newPrice;
+  }
+  
+  return data;
+};
+
+const mockData = generateMockData();
 
 // Get screen width dynamically
 const screenWidth = Dimensions.get("window").width;
-
 
 const CandlestickChartComponent = () => {
   const chartHeight = 350;
@@ -25,7 +59,6 @@ const CandlestickChartComponent = () => {
 
   return (
     <View style={{ flex: 1, padding: 0 }}>
-      
       {/* Green arrow and value (top right) */}
       <View
         style={{
@@ -41,7 +74,7 @@ const CandlestickChartComponent = () => {
       >
         <Image source={arrowGreen} style={{ width: 20, height: 20 }} />
         <Text style={{ color: "#9d9d9d", fontSize: 18, fontFamily: "Satoshi-Medium", marginLeft: 5, paddingRight: 5 }}>
-          1,445
+          {maxValue.toFixed(0)}
         </Text>
       </View>
 
@@ -57,7 +90,7 @@ const CandlestickChartComponent = () => {
               const yLow = chartHeight - yScale(d.low);
               const isBullish = d.close > d.open;
               const isBearish = d.close < d.open;
-              const color = isBullish ? "#cfcfcf" : isBearish ? "#7e7e7e" : "#000000";
+              const color = isBullish ? "#11996b" : isBearish ? "#ff0000" : "#000000";
 
               return (
                 <G key={index}>
@@ -91,7 +124,9 @@ const CandlestickChartComponent = () => {
         }}
       >
         <Image source={arrowRed} style={{ width: 20, height: 20 }} />
-        <Text style={{ color: "#9d9d9d", fontSize: 18, fontFamily: "Satoshi-Medium" }}>1,245</Text>
+        <Text style={{ color: "#9d9d9d", fontSize: 18, fontFamily: "Satoshi-Medium" }}>
+          {minValue.toFixed(0)}
+        </Text>
       </View>
     </View>
   );

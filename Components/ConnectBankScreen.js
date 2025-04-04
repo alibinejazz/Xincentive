@@ -1,5 +1,6 @@
 import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import BackIcon from '../Images/BackIcon';
 import BottomNav from './BottomNav';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png"; // Ensure this is correctly imported
@@ -17,7 +18,8 @@ const ConnectBankScreen = () => {
       <ImageBackground source={LinearBackground} style={styles.headerContainer} resizeMode="cover">
         {/* Back Button */}
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Icon name="chevron-left" size={24} color="black" />
+          {/* <Icon name="chevron-left" size={24} color="black" /> */}
+          <BackIcon/>
           <Text style={styles.backText}>Back</Text>
         </TouchableOpacity>
 

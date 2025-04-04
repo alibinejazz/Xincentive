@@ -1,11 +1,11 @@
 import { Dimensions, Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import CancelIcon from '../Images/CancelIcon';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import success from '../assets/success.png';
 
 const { width, height } = Dimensions.get('window');
-
 const SuccessModal = ({ visible, onClose }) => {
   return (
     <Modal transparent={true} visible={visible} animationType="fade">
@@ -15,7 +15,8 @@ const SuccessModal = ({ visible, onClose }) => {
         <View style={styles.modalBoxContainer}>
           {/* Close Button */}
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Icon name="close" size={24} color="black" />
+            {/* <Icon name="close" size={24} color="black" /> */}
+            <CancelIcon/>
           </TouchableOpacity>
 
           {/* Main Modal */}

@@ -246,7 +246,8 @@ const styles = StyleSheet.create({
     searchBarContainer: {
         paddingHorizontal: 0,
         paddingVertical: 15,
-        width: '100%', // Ensure the container takes full width
+        width: '100%',
+        // height:53 // Ensure the container takes full width
     },
     searchBar: {
         flexDirection: 'row',
@@ -257,7 +258,8 @@ const styles = StyleSheet.create({
         borderColor: "#e8e8e8",
         borderRadius: 140,
         paddingHorizontal: 10,
-        paddingVertical: 10,
+        // paddingVertical: 10,
+        height:53,
         width: '100%', // Ensure the search bar takes full width
     },
     searchIcon: {
