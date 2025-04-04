@@ -5,6 +5,7 @@ import BackIcon from '../Images/BackIcon';
 import BottomNav from './BottomNav';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png";
+import Righticon from '../Images/RightIcon';
 import { WebView } from 'react-native-webview';
 import add from "../assets/add.png";
 import creditcard from "../assets/creditcard.png";
@@ -78,7 +79,7 @@ const AddNewCard = () => {
           <View style={styles.textContainer}>
             <Text style={styles.cardTitle}>Add New Card</Text>
           </View>
-          <Icon name="chevron-right" size={24} color="black" />
+          <Righticon />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.card2} onPress={() => navigation.navigate('Conversion')}>

@@ -5,6 +5,7 @@ import BottomNav from './BottomNav';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png"; // Ensure this is correctly imported
 import React from 'react';
+import Righticon from '../Images/RightIcon';
 import bank from "../assets/bank.png";
 import { useNavigation } from '@react-navigation/native';
 
@@ -39,7 +40,7 @@ const ConnectBankScreen = () => {
               numberOfLines={1}
               ellipsizeMode="tail"
             >Connect your bank account
-            </Text><Text style={styles.nextIcon} ><Icon name="chevron-right" size={24} color="black" />
+            </Text><Text style={styles.nextIcon} ><Righticon />
             </Text>
           </View>
           <Text style={styles.cardSubtitle}>

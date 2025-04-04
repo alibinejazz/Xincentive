@@ -1,4 +1,4 @@
-import { Animated, FlatList, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Dimensions, FlatList, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useRef, useState } from 'react';
 
 import BottomNav from './BottomNav';
@@ -7,6 +7,8 @@ import LinearBackground from "../assets/gradient.png";
 import blacktri from "../assets/blacktri.png";
 import diamond from "../assets/diamond.png";
 import { useNavigation } from '@react-navigation/native';
+
+const { width: screenWidth } = Dimensions.get('window');
 
 const Market = () => {
     const navigation = useNavigation();
@@ -77,7 +79,9 @@ const Market = () => {
                 </ImageBackground>
 
                 <View style={styles.chartContainer}>
-                    <CandlestickChartComponent />
+                    <View style={styles.chartWrapper}>
+                        <CandlestickChartComponent />
+                    </View>
                 </View>
                 
                 <View style={{ height: 100 }} />
@@ -127,7 +131,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     },
     scrollContainer: {
-        paddingBottom: 160,
+        // paddingBottom: 160,
     },
     headerContainer: {
         paddingTop: 40,
@@ -237,7 +241,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginBottom: 20,
-        marginTop: 120,
+        marginTop: 50,
+        width: '100%',
+    },
+    chartWrapper: {
+        width: '100%' ,// Subtracting horizontal padding
+        // height: 300, // Fixed height for the chart
+        overflow: 'hidden',
     },
     stickyDateContainer: {
         position: "absolute",

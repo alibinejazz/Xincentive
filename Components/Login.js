@@ -22,6 +22,11 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [activeInput, setActiveInput] = useState(null);
+    const [errors, setErrors] = useState({
+        fullName: '',
+        email: '',
+        phone: ''
+    });
 
     // Refs for inputs
     const fullNameRef = useRef(null);
@@ -48,11 +53,75 @@ const Login = () => {
         }
     }, [step]); // Run effect when step changes
 
+    const validateFullName = () => {
+        if (!fullName.trim()) {
+            setErrors(prev => ({...prev, fullName: 'Full name is required'}));
+            return false;
+        }
+        if (fullName.trim().length < 3) {
+            setErrors(prev => ({...prev, fullName: 'Name must be at least 3 characters'}));
+            return false;
+        }
+        if (!/^[a-zA-Z ]+$/.test(fullName)) {
+            setErrors(prev => ({...prev, fullName: 'Name should contain only letters'}));
+            return false;
+        }
+        setErrors(prev => ({...prev, fullName: ''}));
+        return true;
+    };
+
+    const validateEmail = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.trim()) {
+            setErrors(prev => ({...prev, email: 'Email is required'}));
+            return false;
+        }
+        if (!emailRegex.test(email)) {
+            setErrors(prev => ({...prev, email: 'Please enter a valid email'}));
+            return false;
+        }
+        setErrors(prev => ({...prev, email: ''}));
+        return true;
+    };
+
+    const validatePhone = () => {
+        const phoneRegex = /^[0-9]{10,15}$/;
+        if (!phoneNumber.trim()) {
+            setErrors(prev => ({...prev, phone: 'Phone number is required'}));
+            return false;
+        }
+        if (!phoneRegex.test(phoneNumber)) {
+            setErrors(prev => ({...prev, phone: 'Please enter a valid phone number (10-15 digits)'}));
+            return false;
+        }
+        setErrors(prev => ({...prev, phone: ''}));
+        return true;
+    };
+
     const handleContinue = () => {
-        if (step < 3) {
-            setStep(step + 1);
-        } else {
-            navigation.navigate('InviteCode');
+        let isValid = false;
+        
+        switch (step) {
+            case 1:
+                isValid = validateFullName();
+                break;
+            case 2:
+                isValid = validateEmail();
+                break;
+            case 3:
+                isValid = validatePhone();
+                break;
+            default:
+                break;
+        }
+
+        if (isValid) {
+            if (step < 3) {
+                setStep(step + 1);
+            } else {
+                // All validations passed, submit the form
+                navigation.navigate('InviteCode');
+            }
         }
     };
 
@@ -81,7 +150,11 @@ const Login = () => {
                 label: 'Full Name',
                 placeholder: 'Enter your full name',
                 value: fullName,
-                onChangeText: setFullName,
+                onChangeText: (text) => {
+                    setFullName(text);
+                    if (errors.fullName) validateFullName();
+                },
+                error: errors.fullName,
                 key: 'fullName',
                 ref: fullNameRef
             };
@@ -91,7 +164,11 @@ const Login = () => {
                 label: 'Email Address',
                 placeholder: 'Enter your email address',
                 value: email,
-                onChangeText: setEmail,
+                onChangeText: (text) => {
+                    setEmail(text);
+                    if (errors.email) validateEmail();
+                },
+                error: errors.email,
                 key: 'email',
                 ref: emailRef
             };
@@ -101,7 +178,13 @@ const Login = () => {
                 label: 'Phone Number',
                 placeholder: 'Enter your phone number',
                 value: phoneNumber,
-                onChangeText: setPhoneNumber,
+                onChangeText: (text) => {
+                    // Only allow numbers
+                    const cleanedText = text.replace(/[^0-9]/g, '');
+                    setPhoneNumber(cleanedText);
+                    if (errors.phone) validatePhone();
+                },
+                error: errors.phone,
                 key: 'phone',
                 ref: phoneRef
             };
@@ -113,13 +196,12 @@ const Login = () => {
 
     return (
         <View style={styles.container}>
-
-    <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-    <View style={styles.backIconContainer}>
-        <BackIcon />
-    </View>
-    <Text style={styles.backText}>Back</Text>
-    </TouchableOpacity>
+            <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+                <View style={styles.backIconContainer}>
+                    <BackIcon />
+                </View>
+                <Text style={styles.backText}>Back</Text>
+            </TouchableOpacity>
 
             <View style={styles.contentContainer}>
                 <View style={styles.headingContainer}>
@@ -132,13 +214,15 @@ const Login = () => {
 
                 <View style={[
                     styles.inputContainer,
-                    activeInput === stepData.key ? styles.inputContainerFocused : { borderColor: '#D8DADC' }
+                    activeInput === stepData.key ? styles.inputContainerFocused : { borderColor: '#D8DADC' },
+                    stepData.error && styles.inputContainerError
                 ]}>
                     <View style={styles.inputHeader}>
                         <Image source={stepData.image} style={styles.coinIcon} />
                         <Text style={[
                             styles.inputLabel,
-                            stepData.value && styles.filledInputLabel
+                            stepData.value && styles.filledInputLabel,
+                            stepData.error && styles.errorLabel
                         ]}>
                             {stepData.label} <Text style={styles.mandatory}>*</Text>
                         </Text>
@@ -153,10 +237,24 @@ const Login = () => {
                         onChangeText={stepData.onChangeText}
                         keyboardType={step === 2 ? 'email-address' : step === 3 ? 'phone-pad' : 'default'}
                         onFocus={() => setActiveInput(stepData.key)}
-                        onBlur={() => setActiveInput(null)}
+                        onBlur={() => {
+                            setActiveInput(null);
+                            // Validate on blur
+                            switch (step) {
+                                case 1: validateFullName(); break;
+                                case 2: validateEmail(); break;
+                                case 3: validatePhone(); break;
+                                default: break;
+                            }
+                        }}
                         selectionColor="#232322"
+                        maxLength={step === 3 ? 15 : undefined}
                     />
                 </View>
+
+                {stepData.error ? (
+                    <Text style={styles.errorText}>{stepData.error}</Text>
+                ) : null}
 
                 <TouchableOpacity
                     style={[
@@ -199,24 +297,23 @@ const styles = StyleSheet.create({
         padding: 8,
         flexDirection: 'row',
         alignItems: 'center',
-        // marginLeft: 8, // Add some left margin if needed
-      },
-      backIconContainer: {
+    },
+    backIconContainer: {
         width: 20,
         height: 20,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 0, 
-        marginLeft:4// Space between icon and text
-      },
-      backText: {
+        marginRight: 0,
+        marginLeft: 4
+    },
+    backText: {
         fontSize: 14,
         color: 'black',
-        marginLeft: 4, // Adjust as needed
+        marginLeft: 4,
         fontFamily: "Satoshi-Medium",
-        includeFontPadding: false, // This helps with vertical alignment
+        includeFontPadding: false,
         textAlignVertical: 'center',
-      },
+    },
     contentContainer: {
         flex: 1,
         paddingHorizontal: 20,
@@ -237,13 +334,16 @@ const styles = StyleSheet.create({
         fontFamily: "Satoshi-Regular"
     },
     inputContainer: {
-        marginBottom: 40,
+        marginBottom: 10, // Reduced to make space for error message
         borderWidth: 1,
         padding: 15,
         borderRadius: 10,
     },
     inputContainerFocused: {
         borderColor: '#232322',
+    },
+    inputContainerError: {
+        borderColor: '#FF3B30',
     },
     inputHeader: {
         flexDirection: 'row',
@@ -266,6 +366,9 @@ const styles = StyleSheet.create({
     filledInputLabel: {
         color: '#232322',
     },
+    errorLabel: {
+        color: '#FF3B30',
+    },
     mandatory: {
         color: 'red',
     },
@@ -277,13 +380,14 @@ const styles = StyleSheet.create({
         margin: 0,
         includeFontPadding: false,
         textAlignVertical: 'center',
-        minHeight: 30, // Added minimum height to ensure placeholder is visible
+        minHeight: 30,
     },
     continueButton: {
         backgroundColor: '#F2F2F2',
         padding: 15,
         borderRadius: 50,
         alignItems: 'center',
+        marginTop: 30, // Added more space between input and button
     },
     continueButtonActive: {
         backgroundColor: '#6FE17C',
@@ -307,6 +411,13 @@ const styles = StyleSheet.create({
         color: 'black',
         fontFamily: "Satoshi-Medium",
         fontSize: 14
+    },
+    errorText: {
+        color: '#FF3B30',
+        fontSize: 14,
+        fontFamily: "Satoshi-Regular",
+        marginBottom: 20,
+        marginLeft: 5,
     },
 });
 

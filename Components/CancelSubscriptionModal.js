@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#9e9e9e',
     alignItems: 'center',
+    marginBottom:30,
   },
   cancelButtonText: {
     fontSize: 16,

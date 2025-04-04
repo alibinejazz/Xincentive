@@ -14,6 +14,7 @@ import Buy from '../Images/Buy';
 import Convert from '../Images/Convert';
 import Deposit from '../Images/Deposit';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import PlusIcon from '../Images/PlusIcon';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
@@ -105,7 +106,8 @@ const Wallet = () => {
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Wallet</Text>
           <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate("ConnectBankScreen")}>
-            <Icon name="add" size={28} color="#000" />
+            {/* <Icon name="add" size={28} color="#000" /> */}
+            <PlusIcon/>
           </TouchableOpacity>
         </View>
 
@@ -173,8 +175,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
+    // borderColor: 'black',
+    // borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute', // Position the add button absolutely
