@@ -15,7 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const ConversionSelection = () => {
     const navigation = useNavigation();
-    const [selectedOption, setSelectedOption] = useState(null); // State to track selection
+    const [selectedOption, setSelectedOption] = useState('Dollars'); // State to track selection
 
     return (
         <View style={styles.container}>

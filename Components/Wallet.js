@@ -76,7 +76,7 @@ const Wallet = () => {
   ];
 
   const renderTransaction = (item) => (
-    <View key={item.id} style={styles.transactionContainer}>
+    <TouchableOpacity key={item.id} style={styles.transactionContainer} onPress={() => navigation.navigate('Conversion')}>
       <View style={styles.transactionLeft}>
         <View style={[styles.logoContainer, { backgroundColor: item.backgroundColor }]}>
           <Image source={item.image} style={styles.logo} resizeMode="contain" />
@@ -92,7 +92,7 @@ const Wallet = () => {
         <Text style={styles.amount}>{item.amount}</Text>
         <Text style={styles.tokens}>{item.tokens}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (

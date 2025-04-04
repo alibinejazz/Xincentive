@@ -82,7 +82,7 @@ const AddNewCard = () => {
           <Righticon />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.card2} onPress={() => navigation.navigate('Conversion')}>
+        <TouchableOpacity style={styles.card2} >
           <View style={styles.iconContainer2}>
             <Image source={creditcard} />
           </View>
