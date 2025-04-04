@@ -6,6 +6,7 @@ import BottomNav from './BottomNav';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import LinearBackground from "../assets/gradient.png";
 import LinearGradient from 'react-native-linear-gradient';
+import Righticon from '../Images/RightIcon';
 import SignoutModal from './SignoutModal';
 import creditcard from "../assets/creditcard.png";
 import edit from "../assets/edit.png";
@@ -61,7 +62,7 @@ const MyProfile = () => {
           >
             <Image source={item.icon} style={styles.menuIcon} />
             <Text style={styles.menuText}>{item.name}</Text>
-            <Icon name="chevron-right" size={24} color="black" />
+            <Righticon/>
           </TouchableOpacity>
         ))}
 
