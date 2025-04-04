@@ -9,9 +9,9 @@ import {
 import React, { useEffect, useRef, useState } from 'react';
 
 import BackIcon from '../Images/BackIcon';
-import Email from '../assets/Email.png';
+import Email from '../assets/email.png';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Phone from '../assets/Phone.png';
+import Phone from '../assets/phone.png';
 import User from '../assets/UserLogin.png';
 import { useNavigation } from '@react-navigation/native';
 
