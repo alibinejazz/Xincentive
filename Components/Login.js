@@ -179,14 +179,15 @@ const Login = () => {
                 placeholder: 'Enter your phone number',
                 value: phoneNumber,
                 onChangeText: (text) => {
-                    // Only allow numbers
+                    // Force numeric input by stripping non-digits
                     const cleanedText = text.replace(/[^0-9]/g, '');
                     setPhoneNumber(cleanedText);
                     if (errors.phone) validatePhone();
                 },
                 error: errors.phone,
                 key: 'phone',
-                ref: phoneRef
+                ref: phoneRef,
+                keyboardType: 'number-pad' // Use number-pad for iOS
             };
             default: return {};
         }
